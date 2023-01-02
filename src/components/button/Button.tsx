@@ -5,6 +5,7 @@ export const Button = styled("button", {
   color: "Black",
   padding: "1%",
   borderRadius: "8px",
+  cursor: "pointer",
 
   variants: {
     variant: {
@@ -63,6 +64,21 @@ export const Button = styled("button", {
         "&:hover": {
           backgroundColor: "#212121",
         },
+      },
+    },
+
+    size: {
+      "1": {
+        fontSize: "xxx-large",
+      },
+      "2": {
+        fontSize: "xx-large",
+      },
+      "3": {
+        fontSize: "x-large",
+      },
+      "4": {
+        fontSize: "large",
       },
     },
   },
