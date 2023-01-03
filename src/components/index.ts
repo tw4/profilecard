@@ -1,1 +1,4 @@
 export * from "./button/Button";
+export * from "./box/Box";
+export * from "./text/Text";
+export * from "./imageIcon/ImageIcon";
