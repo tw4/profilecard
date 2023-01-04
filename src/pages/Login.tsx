@@ -6,14 +6,21 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store";
 import { setUserState, UsersState } from "../features/user/UserSlice";
+import { useEffect } from "react";
+import { UserLoginValidator } from "../utils/UserValidator";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  useEffect(() => {
+    UserLoginValidator(sessionStorage, navigate, "/profile");
+  }, []);
+
   const login = async () => {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
     dispatch(setUserState(res.user as UsersState));
+    sessionStorage.setItem("user", JSON.stringify(res.user));
     navigate("/profile");
   };
 

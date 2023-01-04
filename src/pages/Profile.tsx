@@ -3,28 +3,24 @@ import logo from "../assets/logos/profilecard.svg";
 import { signOut } from "firebase/auth";
 import { auth } from "../services/Firebase";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch } from "../store";
 import { clearUserState } from "../features/user/UserSlice";
 import { useEffect } from "react";
-import { UserValidator } from "../utils/UserValidator";
+import { UserLoginValidator } from "../utils/UserValidator";
 
 const Profile = () => {
-  const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const res = UserValidator(user);
-    if (!res) {
-      logout();
-    }
-    console.log(user);
+    UserLoginValidator(sessionStorage, navigate, "/profile");
   }, []);
 
   const logout = () => {
     signOut(auth);
     dispatch(clearUserState);
     navigate("/");
+    sessionStorage.removeItem("user");
   };
 
   return (
