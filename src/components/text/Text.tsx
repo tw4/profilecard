@@ -2,6 +2,11 @@ import { styled } from "@stitches/react";
 
 export const Text = styled("p", {
   variants: {
+    validator: {
+      error: {
+        color: "Red",
+      },
+    },
     color: {
       light: {
         color: "White",
