@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../store";
 import { setUserState, UsersState } from "../features/user/UserSlice";
 import { useEffect } from "react";
-import { UserLoginValidator } from "../utils/UserValidator";
+import { UserLoginValidator } from "../utils/Validator/UserValidator";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,8 +19,22 @@ const Login = () => {
 
   const login = async () => {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
-    dispatch(setUserState(res.user as UsersState));
-    sessionStorage.setItem("user", JSON.stringify(res.user));
+    const user: UsersState = {
+      uid: res.user.uid,
+      displayName: res.user.displayName as string,
+      email: res.user.email as string,
+    };
+
+    dispatch(setUserState(user));
+    sessionStorage.setItem(
+      "user",
+      JSON.stringify({
+        uid: res.user.uid,
+        displayName: res.user.displayName,
+        email: res.user.email,
+        photoURL: res.user.photoURL,
+      })
+    );
     navigate("/profile");
   };
 
