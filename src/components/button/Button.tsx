@@ -65,6 +65,20 @@ export const Button = styled("button", {
           backgroundColor: "#212121",
         },
       },
+      delete: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: "large",
+        color: "White",
+        backgroundColor: "Red",
+        boxShadow: "0px 8px 20px rgba(96, 28, 238, 0.5)",
+        "&:hover": {
+          backgroundColor: "DarkRed",
+        },
+      },
     },
 
     size: {
