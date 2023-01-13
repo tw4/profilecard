@@ -5,4 +5,17 @@ export const Avatar = styled("img", {
   width: "30px",
   borderRadius: "100%",
   filter: "drop-shadow(0px 8px 8px rgba(96, 28, 238, 0.5));",
+
+  variants: {
+    variant: {
+      profileCard: {
+        height: "100px",
+        width: "100px",
+        marginTop: "5%",
+        filter: "none",
+        borderWidth: "2px",
+        borderStyle: "solid",
+      },
+    },
+  },
 });
