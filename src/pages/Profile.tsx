@@ -173,6 +173,7 @@ const Profile = () => {
           username: username,
           description: description,
           color: color,
+          photoURL: user?.photoURL,
           links: tmp,
         });
         navigate("/" + username);
@@ -195,8 +196,8 @@ const Profile = () => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setDescription(e.target.value);
-    if (description.length > 300) {
-      alert("name must be maximum length 300");
+    if (description.length > 199) {
+      alert("name must be maximum length 200");
       await setDescription("");
     }
   };
@@ -347,7 +348,7 @@ const Profile = () => {
             css={{ width: "50%" }}
           />
           <Text css={{ width: "50%", textAlign: "right" }}>
-            {description.length + "/300"}
+            {description.length + "/200"}
           </Text>
           <Box
             stack="HStack"
@@ -386,7 +387,11 @@ const Profile = () => {
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
-              <Input onChange={titlesValidator} value={link1} type="url" />
+              <Input
+                onChange={(e) => setlink1(e.target.value)}
+                value={link1}
+                type="url"
+              />
             </Box>
           </Box>
           <Box
