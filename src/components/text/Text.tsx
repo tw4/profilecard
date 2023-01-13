@@ -25,6 +25,15 @@ export const Text = styled("p", {
       "4": {
         fontSize: "large",
       },
+      "5": {
+        fontSize: "small",
+      },
+      "6": {
+        fontSize: "x-small",
+      },
+      "7": {
+        fontSize: "xx-small",
+      },
     },
   },
 });
