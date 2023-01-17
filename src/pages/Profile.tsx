@@ -18,6 +18,7 @@ import {
   getDocs,
   deleteDoc,
 } from "firebase/firestore";
+import { SketchPicker } from "react-color";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -202,14 +203,6 @@ const Profile = () => {
     }
   };
 
-  const colorValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > 7) {
-      alert("please enter a HEX code");
-      await setColor("#2596be");
-    }
-    setColor(e.target.value);
-  };
-
   const titlesValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 20) {
       alert("title must be maximum char 20");
@@ -351,27 +344,14 @@ const Profile = () => {
             {description.length + "/200"}
           </Text>
           <Box
-            stack="HStack"
+            stack="VStack"
             css={{
-              justifyContent: "space-between",
+              alignItems: "center",
               width: "50%",
               marginTop: "5%",
             }}>
-            <Box
-              css={{
-                height: "5vh",
-                width: "5vh",
-                backgroundColor: color,
-                borderRadius: "8px",
-                borderWidth: "2px",
-                borderStyle: "solid",
-                borderColor: "#601CEE",
-              }}></Box>
-            <Input
-              onChange={colorValidator}
-              value={color}
-              placeholder="#FFFFF"
-            />
+            <Text>Profile color picker</Text>
+            <SketchPicker color={color} onChange={(e) => setColor(e.hex)} />
           </Box>
           <Box
             stack="HStack"
