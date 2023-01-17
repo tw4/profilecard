@@ -317,7 +317,7 @@ const Profile = () => {
         <Box stack="VStack" css={{ alignItems: "center", marginTop: "5%" }}>
           <Text css={{ width: "50%", textAlign: "left" }}>Name Surname</Text>
           <Input onChange={nameValidator} css={{ width: "50%" }} value={name} />
-          <Text css={{ width: "50%", textAlign: "right" }}>
+          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
             {name.length + "/30"}
           </Text>
           <Text css={{ width: "50%", textAlign: "left", marginTop: "5%" }}>
@@ -335,7 +335,7 @@ const Profile = () => {
             type="text"
             css={{ width: "50%" }}
           />
-          <Text css={{ width: "50%", textAlign: "right" }}>
+          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
             {username.length + "/20"}
           </Text>
           <Text css={{ width: "50%", marginTop: "5%", textAlign: "left" }}>
@@ -347,7 +347,7 @@ const Profile = () => {
             value={description}
             css={{ width: "50%" }}
           />
-          <Text css={{ width: "50%", textAlign: "right" }}>
+          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
             {description.length + "/200"}
           </Text>
           <Box
@@ -383,7 +383,9 @@ const Profile = () => {
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Title</Text>
               <Input onChange={titlesValidator} value={title1} name="title1" />
-              <Text css={{ textAlign: "right" }}>{title1.length + "/20"}</Text>
+              <Text css={{ textAlign: "right", marginTop: "2%" }}>
+                {title1.length + "/20"}
+              </Text>
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
@@ -404,7 +406,9 @@ const Profile = () => {
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Title</Text>
               <Input onChange={titlesValidator} value={title2} name="title2" />
-              <Text css={{ textAlign: "right" }}>{title2.length + "/20"}</Text>
+              <Text css={{ textAlign: "right", margintTop: "2%" }}>
+                {title2.length + "/20"}
+              </Text>
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
@@ -425,7 +429,9 @@ const Profile = () => {
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Title</Text>
               <Input onChange={titlesValidator} value={title3} name="title3" />
-              <Text css={{ textAlign: "right" }}>{title3.length + "/20"}</Text>
+              <Text css={{ textAlign: "right", marginTop: "2%" }}>
+                {title3.length + "/20"}
+              </Text>
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
@@ -446,7 +452,9 @@ const Profile = () => {
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Title</Text>
               <Input onChange={titlesValidator} value={title4} name="title4" />
-              <Text css={{ textAlign: "right" }}>{title4.length + "/20"}</Text>
+              <Text css={{ textAlign: "right", marginTop: "2%" }}>
+                {title4.length + "/20"}
+              </Text>
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
@@ -467,7 +475,9 @@ const Profile = () => {
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Title</Text>
               <Input onChange={titlesValidator} value={title5} name="title5" />
-              <Text css={{ textAlign: "right" }}>{title5.length + "/20"}</Text>
+              <Text css={{ textAlign: "right", marginTop: "2%" }}>
+                {title5.length + "/20"}
+              </Text>
             </Box>
             <Box stack="VStack" css={{ textAlign: "left" }}>
               <Text>Link</Text>
