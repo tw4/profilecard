@@ -1,4 +1,4 @@
-import { Avatar, Box, Link, Text } from "../components";
+import { Avatar, Box, Link, Text } from "../ui-library";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";

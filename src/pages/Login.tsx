@@ -1,4 +1,4 @@
-import { Box, Button, Text, ImageIcon } from "../components";
+import { Box, Button, Text, ImageIcon } from "../ui-library";
 import profileCard from "../assets/logos/profilecard.svg";
 import google from "../assets/logos/google.svg";
 import { auth } from "../services/Firebase";
