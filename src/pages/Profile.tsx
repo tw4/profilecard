@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Text, Input, Link } from "../components";
+import { Avatar, Box, Button, Text, Input, Link } from "../ui-library";
 import logo from "../assets/logos/profilecard.svg";
 import { signOut, User } from "firebase/auth";
 import { auth, db } from "../services/Firebase";
