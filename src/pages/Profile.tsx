@@ -30,21 +30,13 @@ const Profile = () => {
   const [username, setUsername] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [color, setColor] = useState<string>("#2596be");
-  // link 1
-  const [title1, setTitle1] = useState<string>("");
-  const [link1, setlink1] = useState<string>("");
-  // link 2
-  const [title2, setTitle2] = useState<string>("");
-  const [link2, setlink2] = useState<string>("");
-  // link 3
-  const [title3, setTitle3] = useState<string>("");
-  const [link3, setlink3] = useState<string>("");
-  // link 4
-  const [title4, setTitle4] = useState<string>("");
-  const [link4, setlink4] = useState<string>("");
-  // link 5
-  const [title5, setTitle5] = useState<string>("");
-  const [link5, setlink5] = useState<string>("");
+  const [links, setLinks] = useState<Links[]>([
+    { link: "", title: "" },
+    { link: "", title: "" },
+    { link: "", title: "" },
+    { link: "", title: "" },
+    { link: "", title: "" },
+  ]);
 
   const [validatorError, setValidatorError] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -76,16 +68,7 @@ const Profile = () => {
       setName(doc.data().name);
       setDescription(doc.data().description);
       setColor(doc.data().color);
-      setTitle1(doc.data().links[0].title);
-      setlink1(doc.data().links[0].link);
-      setTitle2(doc.data().links[1].title);
-      setlink2(doc.data().links[1].link);
-      setTitle3(doc.data().links[2].title);
-      setlink3(doc.data().links[2].link);
-      setlink4(doc.data().links[3].link);
-      setTitle4(doc.data().links[3].title);
-      setTitle5(doc.data().links[4].title);
-      setlink5(doc.data().links[4].link);
+      setLinks(doc.data().links);
     });
   };
 
@@ -129,16 +112,8 @@ const Profile = () => {
       alert("Username cannot be empty");
     }
 
-    const tmp: Links[] = [];
-
-    tmp.push({ title: title1, link: link1 });
-    tmp.push({ title: title2, link: link2 });
-    tmp.push({ title: title3, link: link3 });
-    tmp.push({ title: title4, link: link4 });
-    tmp.push({ title: title5, link: link5 });
-
-    const validatorErr: string[] = LinksValidator(tmp);
-    setValidatorError(LinksValidator(tmp));
+    const validatorErr: string[] = LinksValidator(links);
+    setValidatorError(LinksValidator(links));
 
     if (validatorErr.length === 0) {
       try {
@@ -158,7 +133,7 @@ const Profile = () => {
           description: description,
           color: color,
           photoURL: user?.photoURL,
-          links: tmp,
+          links: links,
         });
         navigate("/" + username);
       } catch (error) {
@@ -187,70 +162,24 @@ const Profile = () => {
   };
 
   const titlesValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const index = parseInt(e.target.name.replace("title", ""));
     if (e.target.value.length > 20) {
       alert("title must be maximum char 20");
-      switch (e.target.name) {
-        case "title1":
-          await setTitle1("");
-          break;
-        case "title2":
-          await setTitle2("");
-          break;
-        case "title3":
-          await setTitle3("");
-          break;
-        case "title4":
-          await setTitle4("");
-          break;
-        case "title5":
-          await setTitle5("");
-          break;
-        default:
-          break;
-      }
-    }
-
-    switch (e.target.name) {
-      case "title1":
-        await setTitle1(e.target.value);
-        break;
-      case "title2":
-        await setTitle2(e.target.value);
-        break;
-      case "title3":
-        await setTitle3(e.target.value);
-        break;
-      case "title4":
-        await setTitle4(e.target.value);
-        break;
-      case "title5":
-        await setTitle5(e.target.value);
-        break;
-      default:
-        break;
+      const newLinks = [...links];
+      newLinks[index].title = "";
+      setLinks(newLinks);
+    } else {
+      const newLinks = [...links];
+      newLinks[index].title = e.target.value;
+      setLinks(newLinks);
     }
   };
 
   const linksValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    switch (e.target.name) {
-      case "link1":
-        await setlink1(e.target.value);
-        break;
-      case "link2":
-        await setlink2(e.target.value);
-        break;
-      case "link3":
-        await setlink3(e.target.value);
-        break;
-      case "link4":
-        await setlink4(e.target.value);
-        break;
-      case "link5":
-        await setlink5(e.target.value);
-        break;
-      default:
-        break;
-    }
+    const index = parseInt(e.target.name.replace("link", ""));
+    const newLinks = [...links];
+    newLinks[index].link = e.target.value;
+    setLinks(newLinks);
   };
 
   const deleteButton = async () => {
@@ -359,46 +288,19 @@ const Profile = () => {
             <SketchPicker color={color} onChange={(e) => setColor(e.hex)} />
           </Box>
           <Box css={{ marginTop: "5%", width: "50%" }}>
-            <LinkInput
-              link={link1}
-              linkName="link1"
-              title={title1}
-              titleName="title1"
-              linkOnChange={linksValidator}
-              titleOnChange={titlesValidator}
-            />
-            <LinkInput
-              link={link2}
-              linkName="link2"
-              title={title2}
-              titleName="title2"
-              linkOnChange={linksValidator}
-              titleOnChange={titlesValidator}
-            />
-            <LinkInput
-              link={link3}
-              linkName="link3"
-              title={title3}
-              titleName="title3"
-              linkOnChange={linksValidator}
-              titleOnChange={titlesValidator}
-            />
-            <LinkInput
-              link={link4}
-              linkName="link4"
-              title={title4}
-              titleName="title4"
-              linkOnChange={linksValidator}
-              titleOnChange={titlesValidator}
-            />
-            <LinkInput
-              link={link5}
-              linkName="link5"
-              title={title5}
-              titleName="title5"
-              linkOnChange={linksValidator}
-              titleOnChange={titlesValidator}
-            />
+            {links.map((val, index) => {
+              return (
+                <LinkInput
+                  key={index}
+                  link={val.link}
+                  linkName={"link" + index}
+                  title={val.title}
+                  titleName={"title" + index}
+                  linkOnChange={linksValidator}
+                  titleOnChange={titlesValidator}
+                />
+              );
+            })}
           </Box>
           <Box css={{ marginTop: "2%" }}>
             {validatorError
