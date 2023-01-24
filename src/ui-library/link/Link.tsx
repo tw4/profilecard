@@ -7,8 +7,6 @@ export const Link = styled("a", {
         display: "block",
         width: "200px",
         padding: "2%",
-        borderRadius: "10px",
-        color: "White",
         textDecoration: "none",
       },
     },
