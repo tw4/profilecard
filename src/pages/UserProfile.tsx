@@ -67,7 +67,7 @@ const UserProfile = () => {
         <Text css={{ marginTop: "5%", fontWeight: "bold" }}>
           {userDeteil?.name}
         </Text>
-        <Text css={{ marginTop: "5%" }}>@{userDeteil?.username}</Text>
+        <Text css={{ marginTop: "2.5%" }}>@{userDeteil?.username}</Text>
         <Text
           size="5"
           css={{
