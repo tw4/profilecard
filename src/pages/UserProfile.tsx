@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../services/Firebase";
 import { Links, UserCard } from "../types";
+import { Helmet } from "react-helmet";
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -31,6 +32,15 @@ const UserProfile = () => {
 
   return (
     <Box stack="VStack" css={{ alignItems: "center" }}>
+      <Helmet>
+        <title>
+          ProfileCard @{userDeteil ? userDeteil.username : "ProfileCard"}
+        </title>
+        <meta
+          name="description"
+          content={userDeteil ? userDeteil.description : ""}
+        />
+      </Helmet>
       <Box
         stack="VStack"
         css={{

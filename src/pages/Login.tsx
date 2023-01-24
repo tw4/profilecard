@@ -8,6 +8,7 @@ import { useAppDispatch } from "../store";
 import { setUserState, UsersState } from "../features/user/UserSlice";
 import { useEffect } from "react";
 import { UserLoginValidator } from "../utils/Validator/UserValidator";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,6 +41,13 @@ const Login = () => {
 
   return (
     <Box stack="HStack">
+      <Helmet>
+        <title>ProfileCard</title>
+        <meta
+          name="description"
+          content="http://profilecard.co is a web application that allows users to create their own personal profile pages and share links such as social media accounts on these pages."
+        />
+      </Helmet>
       <Box stack="VStack" css={{ backgroundColor: "#601CEE", height: "100vh" }}>
         <img src={profileCard} height="50%" alt="profilecard logo" />
         <Text color="light" size="1" css={{ fontWeight: "bold" }}>

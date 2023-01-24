@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import globalStyles from "./components/globalStyles";
+import globalStyles from "./ui-library/globalStyles";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import UserProfile from "./pages/UserProfile";

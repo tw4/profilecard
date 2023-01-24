@@ -19,6 +19,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { SketchPicker } from "react-color";
+import LinkInput from "../components/LinkInput";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -128,28 +129,7 @@ const Profile = () => {
       alert("Username cannot be empty");
     }
 
-    // refactor this code
     const tmp: Links[] = [];
-
-    if (title1 === "") {
-      setTitle1(link1);
-    }
-
-    if (title2 === "") {
-      setTitle2(link2);
-    }
-
-    if (title3 === "") {
-      setTitle3(link3);
-    }
-
-    if (title4 === "") {
-      setTitle4(link4);
-    }
-
-    if (title5 === "") {
-      setTitle5(link5);
-    }
 
     tmp.push({ title: title1, link: link1 });
     tmp.push({ title: title2, link: link2 });
@@ -157,16 +137,19 @@ const Profile = () => {
     tmp.push({ title: title4, link: link4 });
     tmp.push({ title: title5, link: link5 });
 
+    const validatorErr: string[] = LinksValidator(tmp);
     setValidatorError(LinksValidator(tmp));
 
-    const q = query(collection(db, "users"), where("userID", "==", user!.uid));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      deleteDoc(doc.ref);
-    });
-
-    if (validatorError.length === 0) {
+    if (validatorErr.length === 0) {
       try {
+        const q = query(
+          collection(db, "users"),
+          where("userID", "==", user!.uid)
+        );
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          deleteDoc(doc.ref);
+        });
         await addDoc(collection(db, "users"), {
           userID: user?.uid,
           email: user?.email,
@@ -242,6 +225,28 @@ const Profile = () => {
         break;
       case "title5":
         await setTitle5(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const linksValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    switch (e.target.name) {
+      case "link1":
+        await setlink1(e.target.value);
+        break;
+      case "link2":
+        await setlink2(e.target.value);
+        break;
+      case "link3":
+        await setlink3(e.target.value);
+        break;
+      case "link4":
+        await setlink4(e.target.value);
+        break;
+      case "link5":
+        await setlink5(e.target.value);
         break;
       default:
         break;
@@ -353,120 +358,47 @@ const Profile = () => {
             <Text>Profile color picker</Text>
             <SketchPicker color={color} onChange={(e) => setColor(e.hex)} />
           </Box>
-          <Box
-            stack="HStack"
-            css={{
-              width: "50%",
-              justifyContent: "space-between",
-              marginTop: "5%",
-            }}>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Title</Text>
-              <Input onChange={titlesValidator} value={title1} name="title1" />
-              <Text css={{ textAlign: "right", marginTop: "2%" }}>
-                {title1.length + "/20"}
-              </Text>
-            </Box>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Link</Text>
-              <Input
-                onChange={(e) => setlink1(e.target.value)}
-                value={link1}
-                type="url"
-              />
-            </Box>
-          </Box>
-          <Box
-            stack="HStack"
-            css={{
-              width: "50%",
-              justifyContent: "space-between",
-              marginTop: "5%",
-            }}>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Title</Text>
-              <Input onChange={titlesValidator} value={title2} name="title2" />
-              <Text css={{ textAlign: "right", margintTop: "2%" }}>
-                {title2.length + "/20"}
-              </Text>
-            </Box>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Link</Text>
-              <Input
-                onChange={(e) => setlink2(e.target.value)}
-                value={link2}
-                type="url"
-              />
-            </Box>
-          </Box>
-          <Box
-            stack="HStack"
-            css={{
-              width: "50%",
-              justifyContent: "space-between",
-              marginTop: "5%",
-            }}>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Title</Text>
-              <Input onChange={titlesValidator} value={title3} name="title3" />
-              <Text css={{ textAlign: "right", marginTop: "2%" }}>
-                {title3.length + "/20"}
-              </Text>
-            </Box>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Link</Text>
-              <Input
-                onChange={(e) => setlink3(e.target.value)}
-                type="url"
-                value={link3}
-              />
-            </Box>
-          </Box>
-          <Box
-            stack="HStack"
-            css={{
-              width: "50%",
-              justifyContent: "space-between",
-              marginTop: "5%",
-            }}>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Title</Text>
-              <Input onChange={titlesValidator} value={title4} name="title4" />
-              <Text css={{ textAlign: "right", marginTop: "2%" }}>
-                {title4.length + "/20"}
-              </Text>
-            </Box>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Link</Text>
-              <Input
-                onChange={(e) => setlink4(e.target.value)}
-                type="url"
-                value={link4}
-              />
-            </Box>
-          </Box>
-          <Box
-            stack="HStack"
-            css={{
-              width: "50%",
-              justifyContent: "space-between",
-              marginTop: "5%",
-            }}>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Title</Text>
-              <Input onChange={titlesValidator} value={title5} name="title5" />
-              <Text css={{ textAlign: "right", marginTop: "2%" }}>
-                {title5.length + "/20"}
-              </Text>
-            </Box>
-            <Box stack="VStack" css={{ textAlign: "left" }}>
-              <Text>Link</Text>
-              <Input
-                onChange={(e) => setlink5(e.target.value)}
-                type="url"
-                value={link5}
-              />
-            </Box>
+          <Box css={{ marginTop: "5%", width: "50%" }}>
+            <LinkInput
+              link={link1}
+              linkName="link1"
+              title={title1}
+              titleName="title1"
+              linkOnChange={linksValidator}
+              titleOnChange={titlesValidator}
+            />
+            <LinkInput
+              link={link2}
+              linkName="link2"
+              title={title2}
+              titleName="title2"
+              linkOnChange={linksValidator}
+              titleOnChange={titlesValidator}
+            />
+            <LinkInput
+              link={link3}
+              linkName="link3"
+              title={title3}
+              titleName="title3"
+              linkOnChange={linksValidator}
+              titleOnChange={titlesValidator}
+            />
+            <LinkInput
+              link={link4}
+              linkName="link4"
+              title={title4}
+              titleName="title4"
+              linkOnChange={linksValidator}
+              titleOnChange={titlesValidator}
+            />
+            <LinkInput
+              link={link5}
+              linkName="link5"
+              title={title5}
+              titleName="title5"
+              linkOnChange={linksValidator}
+              titleOnChange={titlesValidator}
+            />
           </Box>
           <Box css={{ marginTop: "2%" }}>
             {validatorError
