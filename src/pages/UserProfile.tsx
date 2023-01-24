@@ -1,4 +1,4 @@
-import { Avatar, Box, Link, Text } from "../ui-library";
+import { Avatar, Box, Link, Text, ImageIcon } from "../ui-library";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -44,6 +44,7 @@ const UserProfile = () => {
       <Box
         stack="VStack"
         css={{
+          position: "relative",
           height: "600px",
           width: "400px",
           marginTop: "10%",
@@ -51,46 +52,99 @@ const UserProfile = () => {
           alignItems: "center",
           borderRadius: "25px",
           boxShadow: "rgba(0, 0, 0, 0.4) 0px 30px 90px;",
-          borderBottomWidth: "20px",
-          borderBottomStyle: "solid",
-          borderBottomColor: userDeteil?.color,
-          paddingLeft: "1.5%",
-          paddingRight: "1.5%",
           textAlign: "center",
           wordBreak: "break-word",
+          "@media screen and (max-width: 768px)": {
+            width: "100%",
+            height: "100vh",
+            marginTop: "0%",
+          },
         }}>
-        <Avatar
-          variant="profileCard"
-          src={userDeteil?.photoURL}
-          css={{ borderColor: userDeteil?.color }}
-        />
-        <Text css={{ marginTop: "5%", fontWeight: "bold" }}>
-          {userDeteil?.name}
-        </Text>
-        <Text css={{ marginTop: "2.5%" }}>@{userDeteil?.username}</Text>
-        <Text
-          size="5"
+        <Box
           css={{
-            marginTop: "5%",
+            position: "absolute",
+            top: "10%",
           }}>
-          {userDeteil?.description}
-        </Text>
-        <Box css={{ marginTop: "5%" }}>
-          {linkList
-            ? linkList.map(({ title, link }) => {
-                if (title === "" && link === "") return null;
-                return (
-                  <Box key={link} css={{ marginTop: "5%" }}>
-                    <Link
-                      linkButton="costomUser"
-                      css={{ backgroundColor: userDeteil?.color }}
-                      href={link}>
-                      {title !== "" ? title : link}
-                    </Link>
-                  </Box>
-                );
-              })
-            : null}
+          <Avatar
+            variant="profileCard"
+            src={userDeteil?.photoURL}
+            css={{ borderColor: userDeteil?.color }}
+          />
+        </Box>
+        <Box
+          css={{
+            height: "20%",
+            width: "100%",
+            borderTopLeftRadius: "25px",
+            borderTopRightRadius: "25px",
+            backgroundColor: userDeteil?.color,
+            "@media screen and (max-width: 768px)": {
+              borderRadius: "0%",
+            },
+          }}></Box>
+        <Box
+          css={{
+            height: "20vh",
+            width: "100%",
+            paddingLeft: "1.5%",
+            paddingRight: "1.5%",
+            position: "absolute",
+            top: "15%",
+          }}>
+          <Text css={{ marginTop: "30%", fontWeight: "bold" }}>
+            {userDeteil?.name}
+          </Text>
+          <Text
+            size="5"
+            css={{
+              marginTop: "5%",
+            }}>
+            {userDeteil?.description}
+          </Text>
+          <Box
+            stack="HStack"
+            css={{
+              height: "20vh",
+              alignItems: "end",
+              position: "absolute",
+              justifyContent: "space-around",
+              "@media screen and (max-width: 768px)": {
+                flexDirection: "row",
+                height: "30vh",
+              },
+            }}>
+            {linkList
+              ? linkList.map(({ title, link }) => {
+                  if (title === "" && link === "") return null;
+                  const url = new URL(link);
+                  const domain = url.hostname;
+                  const iconUrl =
+                    domain === "discord.gg"
+                      ? "https://www.freepnglogos.com/uploads/discord-logo-png/discord-logo-logodownload-download-logotipos-1.png"
+                      : "https://" + domain + "/favicon.ico";
+                  return (
+                    <Box key={link} css={{ marginTop: "5%" }}>
+                      <Link
+                        linkButton="costomUser"
+                        css={{
+                          display: "inline",
+                          color: userDeteil?.color,
+                        }}
+                        href={link}>
+                        {domain !== "" ? (
+                          <ImageIcon
+                            src={iconUrl}
+                            css={{ height: "25px", width: "25px" }}
+                          />
+                        ) : (
+                          link
+                        )}
+                      </Link>
+                    </Box>
+                  );
+                })
+              : null}
+          </Box>
         </Box>
       </Box>
       <Box
