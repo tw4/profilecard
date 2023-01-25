@@ -1,4 +1,4 @@
-import { Box, Text } from "../ui-library";
+import { Box, Text, Link } from "../ui-library";
 import profileCard from "../assets/logos/profilecard.svg";
 import { auth } from "../services/Firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -227,6 +227,26 @@ const Login = () => {
     );
   };
 
+  const Footer = () => {
+    return (
+      <Box
+        stack="HStack"
+        css={{
+          padding: "1%",
+          justifyContent: "center",
+          "@media screen and (max-width: 768px)": {
+            flexDirection: "row",
+            marginTop: "5%",
+          },
+        }}>
+        <Text color="light">contact :</Text>
+        <Link color="light" href="http://www.discord.profilecard.co/">
+          Discord
+        </Link>
+      </Box>
+    );
+  };
+
   return (
     <Box
       stack="VStack"
@@ -242,6 +262,7 @@ const Login = () => {
           <HeaderSide />
           <Features />
           <Produckt />
+          <Footer />
         </Box>
       </Box>
     </Box>
