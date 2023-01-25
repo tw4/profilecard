@@ -49,7 +49,7 @@ const Login = () => {
         <title>ProfileCard</title>
         <meta
           name="description"
-          content="http://profilecard.co is a web application that allows users to create their own personal profile pages and share links such as social media accounts on these pages."
+          content="Welcome to ProfileCard! We are a web application that allows users to create their own personal profile pages and share links such as social media accounts on these pages. Easily share your social media accounts, email address, or blog on your profile page. Customize your profile page and share it with friends, business partners, or potential employers. ProfileCard is a great tool for creating and sharing your personal brand. Sign up now and create your own profile page!"
         />
       </Helmet>
     );
@@ -78,18 +78,21 @@ const Login = () => {
     return (
       <Box stack="VStack" css={{ alignItems: "center" }}>
         <Text
+          as="h1"
           color="light"
           size="1"
           css={{ textAlign: "center", display: "block", fontWeight: "bold" }}>
           Profile Card
         </Text>
         <Text
+          as="h2"
           color="reinbow"
           size="1"
           css={{ textAlign: "center", display: "block", fontWeight: "bold" }}>
-          all links from one link
+          All links from one link
         </Text>
         <Text
+          as="h3"
           color="grey"
           size="4"
           css={{
