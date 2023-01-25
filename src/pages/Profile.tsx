@@ -312,7 +312,6 @@ const Profile = () => {
           <Button
             disabled={loading}
             onClick={() => updateButton()}
-            variant="twitter"
             size="4"
             css={{
               width: "50%",
@@ -326,7 +325,6 @@ const Profile = () => {
           <Button
             disabled={loading}
             onClick={() => deleteButton()}
-            variant="delete"
             size="4"
             css={{
               width: "50%",
