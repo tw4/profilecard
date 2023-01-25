@@ -120,7 +120,7 @@ const UserProfile = () => {
                   const domain = url.hostname;
                   const iconUrl =
                     domain === "discord.gg"
-                      ? "https://www.freepnglogos.com/uploads/discord-logo-png/discord-logo-logodownload-download-logotipos-1.png"
+                      ? "https://cdn-icons-png.flaticon.com/512/3670/3670157.png"
                       : "https://" + domain + "/favicon.ico";
                   return (
                     <Box key={link} css={{ marginTop: "5%" }}>
