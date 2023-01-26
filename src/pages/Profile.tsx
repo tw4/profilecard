@@ -322,7 +322,7 @@ const Profile = () => {
                 width: "90%",
               },
             }}>
-            username
+            Username
           </Text>
 
           <Link
