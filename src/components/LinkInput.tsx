@@ -20,9 +20,22 @@ const LinkInput: FC<IProps> = ({
 }) => {
   return (
     <Box stack="HStack">
-      <Box stack="VStack" css={{ textAlign: "left" }}>
+      <Box
+        stack="VStack"
+        css={{
+          textAlign: "left",
+          marginRight: "2%",
+          "@media screen and (max-width: 768px)": {
+            marginRight: "0%",
+          },
+        }}>
         <Text>Title</Text>
-        <Input onChange={titleOnChange} value={title} name={titleName} />
+        <Input
+          onChange={titleOnChange}
+          value={title}
+          name={titleName}
+          css={{ padding: "5%" }}
+        />
         <Text css={{ textAlign: "right", marginTop: "2%" }}>
           {title.length + "/20"}
         </Text>
@@ -34,6 +47,7 @@ const LinkInput: FC<IProps> = ({
           value={link}
           type="url"
           name={linkName}
+          css={{ padding: "5%" }}
         />
       </Box>
     </Box>

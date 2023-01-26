@@ -1,6 +1,7 @@
 import { styled } from "@stitches/react";
 
 export const Button = styled("button", {
+  width: "100%",
   borderWidth: "2px",
   borderColor: "#302C3F",
   borderStyle: "solid",
@@ -13,8 +14,10 @@ export const Button = styled("button", {
   variants: {
     variant: {
       gradient: {
-        width: "100%",
         backgroundColor: "#1D1A27",
+      },
+      delete: {
+        color: "#F67280",
       },
     },
 
