@@ -9,7 +9,19 @@ export const Text = styled("p", {
     },
     color: {
       light: {
-        color: "White",
+        color: "white",
+      },
+      grey: {
+        color: "Grey",
+      },
+      reinbow: {
+        background: "linear-gradient(to right, #CE4DA4, #7353E5)",
+        backgroundClip: "text",
+        "-webkit-background-clip": "text",
+        "-webkit-text-fill-color": "transparent",
+        color: "transparent",
+        " -moz-background-clip": "text",
+        " -moz-text-fill-color": "transparent",
       },
     },
     size: {
