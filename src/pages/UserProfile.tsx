@@ -45,8 +45,8 @@ const UserProfile = () => {
         stack="VStack"
         css={{
           position: "relative",
-          height: "600px",
-          width: "400px",
+          height: "60vh",
+          width: "40vh",
           marginTop: "10%",
           backgroundColor: "transparent",
           alignItems: "center",
