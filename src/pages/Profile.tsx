@@ -1,5 +1,4 @@
 import { Avatar, Box, Button, Text, Input, Link } from "../ui-library";
-import logo from "../assets/logos/profilecard.svg";
 import { signOut, User } from "firebase/auth";
 import { auth, db } from "../services/Firebase";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +19,7 @@ import {
 } from "firebase/firestore";
 import { SketchPicker } from "react-color";
 import LinkInput from "../components/LinkInput";
+import profileCard from "../assets/logos/profilecard.svg";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -191,22 +191,27 @@ const Profile = () => {
     logout();
   };
 
-  return (
-    <Box
-      stack="VStack"
-      css={{ backgroundColor: "#F8F8F8", alignItems: "center" }}>
+  // components
+  const Nav = () => {
+    return (
       <Box
         stack="HStack"
         css={{
-          backgroundColor: "#601CEE",
-          justifyContent: "space-around",
-          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          "@media screen and (max-width: 768px)": {
+            flexDirection: "row",
+          },
         }}>
         <Box
           stack="HStack"
-          css={{ alignItems: "center", flexDirection: "row" }}>
-          <img height="50px" src={logo} alt="logo" />
-          <Text color="light" size="3" css={{ fontWeight: "bold" }}>
+          css={{
+            "@media screen and (max-width: 768px)": {
+              flexDirection: "row",
+            },
+          }}>
+          <img src={profileCard} height="30px" alt="profilecard logo" />
+          <Text color="light" size="4" css={{ fontWeight: "bold" }}>
             Profile Card
           </Text>
         </Box>
@@ -214,21 +219,56 @@ const Profile = () => {
           onClick={() => logout()}
           size="4"
           css={{
-            backgroundColor: "transparent",
-            color: "White",
+            width: "10%",
+            padding: "0.5%",
+            "@media screen and (max-width: 768px)": {
+              width: "50%",
+            },
           }}>
           Logout
         </Button>
       </Box>
+    );
+  };
+
+  const Footer = () => {
+    return (
+      <Box
+        stack="HStack"
+        css={{
+          padding: "1%",
+          justifyContent: "center",
+          "@media screen and (max-width: 768px)": {
+            flexDirection: "row",
+            marginTop: "5%",
+          },
+        }}>
+        <Text color="light">contact :</Text>
+        <Link color="light" href="http://www.discord.profilecard.co/">
+          Discord
+        </Link>
+      </Box>
+    );
+  };
+
+  return (
+    <Box
+      stack="VStack"
+      css={{
+        backgroundColor: "#1D1A27",
+        alignItems: "center",
+        paddingLeft: "2.5%",
+        paddingRight: "2.5%",
+      }}>
+      <Nav />
       <Box
         stack="VStack"
         css={{
           width: "50%",
-          backgroundColor: "White",
+          backgroundcolor: "#302C3F",
           alignItems: "center",
-          borderLeft: "2px solid #601CEE",
-          borderRight: "2px solid #601CEE",
           paddingBottom: "5%",
+          color: "white",
           "@media screen and (max-width: 768px)": {
             width: "100%",
           },
@@ -242,39 +282,114 @@ const Profile = () => {
           }}
         />
         <Box stack="VStack" css={{ alignItems: "center", marginTop: "5%" }}>
-          <Text css={{ width: "50%", textAlign: "left" }}>Name Surname</Text>
-          <Input onChange={nameValidator} css={{ width: "50%" }} value={name} />
-          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
+          <Text
+            css={{
+              textAlign: "left",
+              width: "50%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
+            Name Surname
+          </Text>
+          <Input
+            onChange={nameValidator}
+            css={{
+              width: "50%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}
+            value={name}
+          />
+          <Text
+            css={{
+              width: "50%",
+              textAlign: "right",
+              marginTop: "1%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             {name.length + "/30"}
           </Text>
-          <Text css={{ width: "50%", textAlign: "left", marginTop: "5%" }}>
-            username
+          <Text
+            css={{
+              width: "50%",
+              textAlign: "left",
+              marginTop: "5%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
+            Username
           </Text>
 
           <Link
             href={"https://www.profilecard.co/" + username}
-            css={{ textAlign: "left", width: "50%" }}>
+            css={{
+              textAlign: "left",
+              width: "50%",
+              color: "White",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             https://www.profilecard.co/{username}
           </Link>
           <Input
             onChange={usernameValidator}
             value={username}
             type="text"
-            css={{ width: "50%" }}
+            css={{
+              width: "50%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}
           />
-          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
+          <Text
+            css={{
+              width: "50%",
+              textAlign: "right",
+              marginTop: "1%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             {username.length + "/20"}
           </Text>
-          <Text css={{ width: "50%", marginTop: "5%", textAlign: "left" }}>
+          <Text
+            css={{
+              width: "50%",
+              marginTop: "5%",
+              textAlign: "left",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             Description
           </Text>
 
           <Input
             onChange={descriptionValidator}
             value={description}
-            css={{ width: "50%" }}
+            css={{
+              width: "50%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}
           />
-          <Text css={{ width: "50%", textAlign: "right", marginTop: "1%" }}>
+          <Text
+            css={{
+              width: "50%",
+              textAlign: "right",
+              marginTop: "1%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             {description.length + "/200"}
           </Text>
           <Box
@@ -285,9 +400,27 @@ const Profile = () => {
               marginTop: "5%",
             }}>
             <Text>Profile color picker</Text>
-            <SketchPicker color={color} onChange={(e) => setColor(e.hex)} />
+            <SketchPicker
+              disableAlpha={true}
+              color={color}
+              onChange={(e) => setColor(e.hex)}
+              styles={{
+                default: {
+                  picker: {
+                    backgroundColor: "#302C3F",
+                  },
+                },
+              }}
+            />
           </Box>
-          <Box css={{ marginTop: "5%", width: "50%" }}>
+          <Box
+            css={{
+              marginTop: "5%",
+              width: "50%",
+              "@media screen and (max-width: 768px)": {
+                width: "90%",
+              },
+            }}>
             {links.map((val, index) => {
               return (
                 <LinkInput
@@ -323,6 +456,7 @@ const Profile = () => {
             Save
           </Button>
           <Button
+            variant="delete"
             disabled={loading}
             onClick={() => deleteButton()}
             size="4"
@@ -337,22 +471,7 @@ const Profile = () => {
           </Button>
         </Box>
       </Box>
-      <Box
-        stack="HStack"
-        css={{
-          backgroundColor: "#601CEE",
-          padding: "1%",
-          justifyContent: "center",
-          "@media screen and (max-width: 768px)": {
-            flexDirection: "row",
-            marginTop: "5%",
-          },
-        }}>
-        <Text color="light">contact :</Text>
-        <Link color="light" href="http://www.discord.profilecard.co/">
-          Discord
-        </Link>
-      </Box>
+      <Footer />
     </Box>
   );
 };
