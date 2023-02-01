@@ -46,10 +46,10 @@ const Login = () => {
   const MetaTag = () => {
     return (
       <Helmet>
-        <title>ProfileCard</title>
+        <title>Create and share Profile Card Free - ProfileCard.co</title>
         <meta
           name="description"
-          content="Welcome to ProfileCard! We are a web application that allows users to create their own personal profile pages and share links such as social media accounts on these pages. Easily share your social media accounts, email address, or blog on your profile page. Customize your profile page and share it with friends, business partners, or potential employers. ProfileCard is a great tool for creating and sharing your personal brand. Sign up now and create your own profile page!"
+          content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
         />
       </Helmet>
     );
