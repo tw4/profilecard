@@ -46,9 +46,7 @@ const Login = () => {
   const MetaTag = () => {
     return (
       <Helmet>
-        <title>
-          Customizable Profiles for Sharing Social Media Links - ProfileCard
-        </title>
+        <title>Create and share Profile Card Free - ProfileCard.co</title>
         <meta
           name="description"
           content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
