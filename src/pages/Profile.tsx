@@ -80,6 +80,7 @@ const Profile = () => {
   };
 
   const usernameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true);
     if (e.target.value.length > 20) {
       alert("username must be maximum length 20");
       await setUsername("");
@@ -104,6 +105,7 @@ const Profile = () => {
         setUsername(e.target.value);
       }
     });
+    setLoading(false);
   };
 
   const updateButton = async () => {
@@ -144,11 +146,13 @@ const Profile = () => {
   };
 
   const nameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true);
     setName(e.target.value);
     if (name.length > 29) {
       alert("name must be maximum length 30");
       await setName("");
     }
+    setLoading(false);
   };
 
   const descriptionValidator = async (
