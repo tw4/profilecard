@@ -25,7 +25,7 @@ const UserProfile = () => {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.size === 0) {
-      navigate("/");
+      navigate("/404");
     }
 
     querySnapshot.forEach(async (doc) => {

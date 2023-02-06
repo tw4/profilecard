@@ -3,6 +3,7 @@ import globalStyles from "./ui-library/globalStyles";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import UserProfile from "./pages/UserProfile";
+import NotFound from "./pages/404";
 
 const App = () => {
   globalStyles();
@@ -11,6 +12,7 @@ const App = () => {
       <Route path="/" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/:user" element={<UserProfile />} />
+      <Route path="/404" element={<NotFound />} />
     </Routes>
   );
 };
