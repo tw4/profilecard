@@ -1,10 +1,11 @@
-import { Avatar, Box, Link, Text, ImageIcon, Spinner } from "../ui-library";
+import { Avatar, Box, Link, Text, ImageIcon } from "../ui-library";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../services/Firebase";
 import { Links, UserCard } from "../types";
 import { Helmet } from "react-helmet";
+import Loading from "../components/Loading";
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -175,20 +176,6 @@ const UserProfile = () => {
             profilecard.co
           </Link>
         </Box>
-      </Box>
-    );
-  };
-
-  const Loading = () => {
-    return (
-      <Box
-        stack="VStack"
-        css={{
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-        <Spinner />
       </Box>
     );
   };
