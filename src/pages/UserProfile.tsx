@@ -16,7 +16,7 @@ const UserProfile = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    getUserDeteilFromDB(user!);
+    getUserDeteilFromDB(user || "");
   }, []);
 
   const getUserDeteilFromDB = async (userName: string) => {
