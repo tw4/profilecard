@@ -142,6 +142,7 @@ const UserProfile = () => {
                             <ImageIcon
                               src={iconUrl}
                               css={{ height: "25px", width: "25px" }}
+                              alt={link}
                             />
                           ) : (
                             link

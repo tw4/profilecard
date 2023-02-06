@@ -224,7 +224,12 @@ const Login = () => {
               marginTop: "10%",
             },
           }}>
-          <img src={profileCardPurview} width="50%" height="50%" />
+          <img
+            src={profileCardPurview}
+            width="50%"
+            height="50%"
+            alt="profile card purview"
+          />
         </Box>
       </Box>
     );
