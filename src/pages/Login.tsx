@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet";
 import Card from "../components/Card";
 import GradientButton from "../components/GradientButton";
 import profileCardPurview from "../assets/profileCardPurview.svg";
+import MetaTag from "../components/MetaTag";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -42,18 +43,6 @@ const Login = () => {
   };
 
   // components
-
-  const MetaTag = () => {
-    return (
-      <Helmet>
-        <title>Create and share Profile Card Free - ProfileCard.co</title>
-        <meta
-          name="description"
-          content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
-        />
-      </Helmet>
-    );
-  };
 
   const Nav = () => {
     return (
@@ -263,7 +252,10 @@ const Login = () => {
         paddingLeft: "2.5%",
         paddingRight: "2.5%",
       }}>
-      <MetaTag />
+      <MetaTag
+        title="Create and share Profile Card Free - ProfileCard.co"
+        content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
+      />
       <Box stack="VStack">
         <Nav />
         <Box stack="VStack" css={{ marginTop: "10%" }}>
