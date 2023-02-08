@@ -1,5 +1,4 @@
 import { Box, Text, Link } from "../ui-library";
-import profileCard from "../assets/logos/profilecard.svg";
 import { auth } from "../services/Firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -7,11 +6,11 @@ import { useAppDispatch } from "../store";
 import { setUserState, UsersState } from "../features/user/UserSlice";
 import { useEffect } from "react";
 import { UserLoginValidator } from "../utils/Validator/UserValidator";
-import { Helmet } from "react-helmet";
 import Card from "../components/Card";
-import GradientButton from "../components/GradientButton";
 import profileCardPurview from "../assets/profileCardPurview.svg";
 import MetaTag from "../components/MetaTag";
+import Navbar from "../components/Navbar";
+import HeaderSide from "../components/LandingPage/HeaderSide";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -43,66 +42,6 @@ const Login = () => {
   };
 
   // components
-
-  const Nav = () => {
-    return (
-      <Box
-        stack="HStack"
-        css={{
-          alignItems: "center",
-          height: "5vh",
-          "@media screen and (max-width: 768px)": {
-            flexDirection: "row",
-          },
-        }}>
-        <img src={profileCard} height="30px" alt="profilecard logo" />
-        <Text color="light" size="4" css={{ fontWeight: "bold" }}>
-          Profile Card
-        </Text>
-      </Box>
-    );
-  };
-
-  const HeaderSide = () => {
-    return (
-      <Box stack="VStack" css={{ alignItems: "center" }}>
-        <Text
-          as="h1"
-          color="light"
-          size="1"
-          css={{ textAlign: "center", display: "block", fontWeight: "bold" }}>
-          Profile Card
-        </Text>
-        <Text
-          as="h2"
-          color="reinbow"
-          size="1"
-          css={{ textAlign: "center", display: "block", fontWeight: "bold" }}>
-          All links from one link
-        </Text>
-        <Text
-          as="h3"
-          color="grey"
-          size="4"
-          css={{
-            width: "50%",
-            "@media screen and (max-width: 768px)": {
-              width: "90%",
-            },
-          }}>
-          Welcome to ProfileCard! We are a web application that allows users to
-          create their own personal profile pages and share links such as social
-          media accounts on these pages. Easily share your social media
-          accounts, email address, or blog on your profile page. Customize your
-          profile page and share it with friends, business partners, or
-          potential employers. ProfileCard is a great tool for creating and
-          sharing your personal brand. Sign up now and create your own profile
-          page!
-        </Text>
-        <GradientButton content="Sign in with Google" onClik={login} size={3} />
-      </Box>
-    );
-  };
 
   const Features = () => {
     return (
@@ -257,9 +196,9 @@ const Login = () => {
         content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
       />
       <Box stack="VStack">
-        <Nav />
+        <Navbar />
         <Box stack="VStack" css={{ marginTop: "10%" }}>
-          <HeaderSide />
+          <HeaderSide login={() => login()} />
           <Features />
           <Produckt />
           <Footer />
