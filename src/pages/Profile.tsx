@@ -20,6 +20,7 @@ import {
 import { SketchPicker } from "react-color";
 import LinkInput from "../components/LinkInput";
 import profileCard from "../assets/logos/profilecard.svg";
+import Footer from "../components/Footer";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -231,26 +232,6 @@ const Profile = () => {
           }}>
           Logout
         </Button>
-      </Box>
-    );
-  };
-
-  const Footer = () => {
-    return (
-      <Box
-        stack="HStack"
-        css={{
-          padding: "1%",
-          justifyContent: "center",
-          "@media screen and (max-width: 768px)": {
-            flexDirection: "row",
-            marginTop: "5%",
-          },
-        }}>
-        <Text color="light">contact :</Text>
-        <Link color="light" href="http://www.discord.profilecard.co/">
-          Discord
-        </Link>
       </Box>
     );
   };
