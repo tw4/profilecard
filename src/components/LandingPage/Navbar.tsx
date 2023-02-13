@@ -1,5 +1,5 @@
 import { Box, Text } from '../../ui-library';
-import profileCard from '../assets/logos/profilecard.svg';
+import profileCard from '../../assets/logos/profilecard.svg';
 
 const Navbar = () => {
   return (
