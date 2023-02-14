@@ -1,5 +1,5 @@
 import { Box } from '../ui-library';
-import { auth } from '../services/Firebase';
+import { auth, db } from '../services/Firebase';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store';
@@ -12,6 +12,15 @@ import HeaderSide from '../components/LandingPage/HeaderSide';
 import Features from '../components/LandingPage/Features';
 import Produckt from '../components/LandingPage/Produckt';
 import Footer from '../components/Footer';
+import {
+  doc,
+  collection,
+  getDocs,
+  query,
+  where,
+  updateDoc,
+  setDoc,
+} from 'firebase/firestore';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,6 +32,7 @@ const Login = () => {
 
   const login = async () => {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
+    const token = await res.user.getIdToken();
     const user: UsersState = {
       uid: res.user.uid,
       displayName: res.user.displayName as string,
@@ -39,6 +49,39 @@ const Login = () => {
         photoURL: res.user.photoURL,
       })
     );
+
+    const q = query(
+      collection(db, 'users'),
+      where('userID', '==', res.user.uid)
+    );
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+      await setDoc(doc(db, 'users', res.user.uid), {
+        token: token,
+        userID: res.user.uid,
+        email: res.user.email,
+        name: res.user.displayName,
+        username: '',
+        description: '',
+        color: '',
+        photoURL: res.user.photoURL,
+        links: [
+          { link: '', title: '' },
+          { link: '', title: '' },
+          { link: '', title: '' },
+          { link: '', title: '' },
+          { link: '', title: '' },
+        ],
+      });
+    } else {
+      const doc = querySnapshot.docs[0];
+      await updateDoc(doc.ref, {
+        token: token,
+      });
+    }
+
+    sessionStorage.setItem('token', token);
+
     navigate('/profile');
   };
 
