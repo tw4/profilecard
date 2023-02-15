@@ -21,6 +21,7 @@ import {
   updateDoc,
   setDoc,
 } from 'firebase/firestore';
+import Layout from '../components/layout/Layout';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -86,14 +87,7 @@ const Login = () => {
   };
 
   return (
-    <Box
-      stack="VStack"
-      css={{
-        backgroundColor: '#1D1A27',
-        paddingLeft: '2.5%',
-        paddingRight: '2.5%',
-      }}
-    >
+    <Layout>
       <MetaTag
         title="Create and share Profile Card Free - ProfileCard.co"
         content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
@@ -107,7 +101,7 @@ const Login = () => {
           <Footer />
         </Box>
       </Box>
-    </Box>
+    </Layout>
   );
 };
 
