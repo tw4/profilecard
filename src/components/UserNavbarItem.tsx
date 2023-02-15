@@ -10,7 +10,7 @@ type IProps = {
 const UserNavbarItem: FC<IProps> = ({ title, to }) => {
   return (
     <Box css={{ marginLeft: '2%', marginRight: '2%' }}>
-      <Link to={to}>
+      <Link to={to} style={{ textDecoration: 'none' }}>
         <Text color="light">{title}</Text>
       </Link>
     </Box>
