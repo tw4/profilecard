@@ -11,11 +11,11 @@ import { LinksValidator } from '../utils/Validator/FormValidator';
 import { Links } from '../types';
 import {
   collection,
-  addDoc,
   query,
   where,
   getDocs,
   deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { SketchPicker } from 'react-color';
 import LinkInput from '../components/LinkInput';
@@ -31,6 +31,7 @@ const Profile = () => {
   const [username, setUsername] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [color, setColor] = useState<string>('#2596be');
+  const [token, setToken] = useState<string>(sessionStorage.getItem('token')!);
   const [links, setLinks] = useState<Links[]>([
     { link: '', title: '' },
     { link: '', title: '' },
@@ -62,22 +63,27 @@ const Profile = () => {
   };
 
   const getUserFromDB = async (user: User) => {
-    const q = query(collection(db, 'users'), where('userID', '==', user.uid));
+    const q = query(
+      collection(db, 'users'),
+      where('userID', '==', user.uid),
+      where('token', '==', token)
+    );
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(doc => {
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
       setUsername(doc.data().username);
       setName(doc.data().name);
       setDescription(doc.data().description);
       setColor(doc.data().color);
       setLinks(doc.data().links);
-    });
+    }
   };
-
   const logout = () => {
     signOut(auth);
     dispatch(clearUserState);
     navigate('/');
     sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
   };
 
   const usernameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,13 +128,13 @@ const Profile = () => {
       try {
         const q = query(
           collection(db, 'users'),
-          where('userID', '==', user!.uid)
+          where('userID', '==', user?.uid),
+          where('token', '==', token)
         );
+
         const querySnapshot = await getDocs(q);
-        querySnapshot.forEach(doc => {
-          deleteDoc(doc.ref);
-        });
-        await addDoc(collection(db, 'users'), {
+        const doc = querySnapshot.docs[0];
+        await updateDoc(doc.ref, {
           userID: user?.uid,
           email: user?.email,
           name: name,
@@ -188,11 +194,14 @@ const Profile = () => {
   };
 
   const deleteButton = async () => {
-    const q = query(collection(db, 'users'), where('userID', '==', user!.uid));
+    const q = query(
+      collection(db, 'users'),
+      where('userID', '==', user?.uid),
+      where('token', '==', token)
+    );
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(doc => {
-      deleteDoc(doc.ref);
-    });
+    const doc = querySnapshot.docs[0];
+    await deleteDoc(doc.ref);
     logout();
   };
 
