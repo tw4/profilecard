@@ -21,6 +21,7 @@ import { SketchPicker } from 'react-color';
 import LinkInput from '../components/LinkInput';
 import Footer from '../components/Footer';
 import UserNavbar from '../components/UserNavbar';
+import CenterLayout from '../components/layout/CenterLayout';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -206,15 +207,7 @@ const Profile = () => {
   };
 
   return (
-    <Box
-      stack="VStack"
-      css={{
-        backgroundColor: '#1D1A27',
-        alignItems: 'center',
-        paddingLeft: '2.5%',
-        paddingRight: '2.5%',
-      }}
-    >
+    <CenterLayout>
       <UserNavbar />
       <Box
         stack="VStack"
@@ -439,7 +432,7 @@ const Profile = () => {
         </Box>
       </Box>
       <Footer />
-    </Box>
+    </CenterLayout>
   );
 };
 
