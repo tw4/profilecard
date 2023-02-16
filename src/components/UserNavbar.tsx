@@ -16,6 +16,7 @@ const UserNavbar = () => {
     dispatch(clearUserState);
     navigate('/');
     sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
   };
   return (
     <Box
