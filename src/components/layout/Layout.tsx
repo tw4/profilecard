@@ -11,7 +11,6 @@ const Layout: FC<IProps> = ({ children }) => {
     <Box
       stack="VStack"
       css={{
-        backgroundColor: '#1D1A27',
         paddingLeft: '2.5%',
         paddingRight: '2.5%',
       }}
