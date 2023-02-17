@@ -22,6 +22,7 @@ import LinkInput from '../components/LinkInput';
 import Footer from '../components/Footer';
 import UserNavbar from '../components/UserNavbar';
 import CenterLayout from '../components/layout/CenterLayout';
+import Loading from '../components/Loading';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const Profile = () => {
   // from DB to user ID and token
   // get user info and add to user state
   const getUserFromDB = async (user: User) => {
+    setLoading(true);
     const q = query(
       collection(db, 'users'),
       where('userID', '==', user.uid),
@@ -81,6 +83,7 @@ const Profile = () => {
       setColor(doc.data().color);
       setLinks(doc.data().links);
     }
+    setLoading(false);
   };
 
   // Here logout function for Firebase,
@@ -227,7 +230,9 @@ const Profile = () => {
     logout();
   };
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <CenterLayout>
       <UserNavbar />
       <Box
