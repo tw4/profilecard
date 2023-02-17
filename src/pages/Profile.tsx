@@ -63,6 +63,9 @@ const Profile = () => {
     }
   };
 
+  // if user ID and token equal
+  // from DB to user ID and token
+  // get user info and add to user state
   const getUserFromDB = async (user: User) => {
     const q = query(
       collection(db, 'users'),
@@ -79,6 +82,9 @@ const Profile = () => {
       setLinks(doc.data().links);
     }
   };
+
+  // Here logout function for Firebase,
+  // Redux and sessionstorage made
   const logout = () => {
     signOut(auth);
     dispatch(clearUserState);
@@ -87,6 +93,9 @@ const Profile = () => {
     sessionStorage.removeItem('token');
   };
 
+  // username check if username is not exist,
+  // and add to user state else show alert
+  // message and clear user state
   const usernameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     if (e.target.value.length > 20) {
@@ -116,6 +125,10 @@ const Profile = () => {
     setLoading(false);
   };
 
+  // Updates the user information
+  // in the Firebase database
+  // if the user ID and token match
+  //  the corresponding values in the database
   const updateButton = async () => {
     setLoading(true);
     if (username === '') {
@@ -153,6 +166,7 @@ const Profile = () => {
     setLoading(false);
   };
 
+  // this function makes maximum length control for name
   const nameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoading(true);
     setName(e.target.value);
@@ -163,6 +177,7 @@ const Profile = () => {
     setLoading(false);
   };
 
+  // this function makes maximum length control for description
   const descriptionValidator = async (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -173,6 +188,7 @@ const Profile = () => {
     }
   };
 
+  // this function makes maximum length control for title
   const titlesValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const index = parseInt(e.target.name.replace('title', ''));
     if (e.target.value.length > 20) {
@@ -187,13 +203,18 @@ const Profile = () => {
     }
   };
 
-  const linksValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // This function tracks changes
+  // to a link input field and updates the 'links' array.
+  const linkHandler = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const index = parseInt(e.target.name.replace('link', ''));
     const newLinks = [...links];
     newLinks[index].link = e.target.value;
     setLinks(newLinks);
   };
 
+  // this function makes user delete
+  // info if user ID and token match
+  // from in firebase database user id and token
   const deleteButton = async () => {
     const q = query(
       collection(db, 'users'),
@@ -387,7 +408,7 @@ const Profile = () => {
                   linkName={'link' + index}
                   title={val.title}
                   titleName={'title' + index}
-                  linkOnChange={linksValidator}
+                  linkOnChange={linkHandler}
                   titleOnChange={titlesValidator}
                 />
               );
