@@ -31,6 +31,11 @@ const Login = () => {
     UserLoginValidator(sessionStorage, navigate, '/profile');
   }, []);
 
+  // This function handles user login with Google authentication,
+  // saves user information and token to sessionStorage and Firestore,
+  // and dispatches the user object to the Redux store.
+  // user is redirected to profile page after login
+
   const login = async () => {
     const res = await signInWithPopup(auth, new GoogleAuthProvider());
     const token = await res.user.getIdToken();
