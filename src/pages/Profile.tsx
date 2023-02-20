@@ -100,7 +100,6 @@ const Profile = () => {
   // and add to user state else show alert
   // message and clear user state
   const usernameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoading(true);
     if (e.target.value.length > 20) {
       alert('username must be maximum length 20');
       await setUsername('');
@@ -125,7 +124,6 @@ const Profile = () => {
         setUsername(e.target.value);
       }
     });
-    setLoading(false);
   };
 
   // Updates the user information
@@ -171,13 +169,11 @@ const Profile = () => {
 
   // this function makes maximum length control for name
   const nameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoading(true);
     setName(e.target.value);
     if (name.length > 29) {
       alert('name must be maximum length 30');
       await setName('');
     }
-    setLoading(false);
   };
 
   // this function makes maximum length control for description
