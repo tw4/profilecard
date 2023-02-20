@@ -5,18 +5,15 @@ type IProps = {
   children: ReactNode;
 };
 
-const Layout: FC<IProps> = ({ children }) => {
+const UserProfileLayout: FC<IProps> = ({ children }) => {
   return (
     <Box
       stack="VStack"
-      css={{
-        paddingLeft: '2.5%',
-        paddingRight: '2.5%',
-      }}
+      css={{ alignItems: 'center', backgroundColor: 'White', height: '100vh' }}
     >
       {children}
     </Box>
   );
 };
 
-export default Layout;
+export default UserProfileLayout;
