@@ -251,8 +251,8 @@ const Profile = () => {
         <Avatar
           src={user?.photoURL || avatar}
           css={{
-            height: '50px',
-            width: '50px',
+            height: '100px',
+            width: '100px',
             marginTop: '2.5%',
           }}
         />
