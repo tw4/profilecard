@@ -2,6 +2,7 @@ import { Box, Avatar, Text, Link, ImageIcon } from '../../ui-library';
 import { Helmet } from 'react-helmet';
 import { Links, UserCard } from '../../types';
 import type { FC } from 'react';
+import UserProfileLayout from '../layout/UserProfileLayout';
 
 type IProps = {
   userDeteil: UserCard;
@@ -10,19 +11,7 @@ type IProps = {
 
 const DefaultProfile: FC<IProps> = ({ linkList, userDeteil }) => {
   return (
-    <Box
-      stack="VStack"
-      css={{ alignItems: 'center', backgroundColor: 'White', height: '100vh' }}
-    >
-      <Helmet>
-        <title>
-          ProfileCard @{userDeteil ? userDeteil.username : 'ProfileCard'}
-        </title>
-        <meta
-          name="description"
-          content={userDeteil ? userDeteil.description : ''}
-        />
-      </Helmet>
+    <>
       <Box
         stack="VStack"
         css={{
@@ -30,7 +19,7 @@ const DefaultProfile: FC<IProps> = ({ linkList, userDeteil }) => {
           height: '60vh',
           width: '40vh',
           marginTop: '10%',
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
           alignItems: 'center',
           borderRadius: '25px',
           boxShadow: 'rgba(0, 0, 0, 0.4) 0px 30px 90px;',
@@ -137,28 +126,7 @@ const DefaultProfile: FC<IProps> = ({ linkList, userDeteil }) => {
           </Box>
         </Box>
       </Box>
-      <Box
-        stack="HStack"
-        css={{
-          position: 'fixed',
-          left: '0',
-          bottom: '0',
-          height: '5vh',
-          backgroundColor: '#000000',
-          padding: '1%',
-          justifyContent: 'center',
-          '@media screen and (max-width: 768px)': {
-            flexDirection: 'row',
-            marginTop: '5%',
-          },
-        }}
-      >
-        <Text color="light">create your own page :</Text>
-        <Link color="light" href="http://www.profilecard.co/">
-          profilecard.co
-        </Link>
-      </Box>
-    </Box>
+    </>
   );
 };
 

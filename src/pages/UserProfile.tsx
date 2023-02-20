@@ -5,6 +5,9 @@ import { db } from '../services/Firebase';
 import { Links, UserCard } from '../types';
 import Loading from '../components/Loading';
 import DefaultProfile from '../components/ProfileTheme/DefaultProfile';
+import MetaTag from '../components/MetaTag';
+import UserProfileLayout from '../components/layout/UserProfileLayout';
+import UserProfileFooter from '../components/UserProfileFooter';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -42,7 +45,21 @@ const UserProfile = () => {
   return loading ? (
     <Loading />
   ) : (
-    <DefaultProfile linkList={linkList} userDeteil={userDeteil as UserCard} />
+    <>
+      <UserProfileLayout>
+        <MetaTag
+          title={`ProfileCard  ${
+            userDeteil ? userDeteil.username : 'ProfileCard'
+          }`}
+          content={userDeteil ? userDeteil.username : 'ProfileCard'}
+        />
+        <DefaultProfile
+          linkList={linkList}
+          userDeteil={userDeteil as UserCard}
+        />
+      </UserProfileLayout>
+      <UserProfileFooter />
+    </>
   );
 };
 
