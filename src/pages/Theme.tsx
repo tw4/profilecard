@@ -7,10 +7,10 @@ import { UserLoginValidator } from '../utils/Validator/UserValidator';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../services/Firebase';
-import DefaultProfile from '../components/ProfileTheme/DefaultProfile';
 import type { Links, UserCard } from '../types';
 import ThemeListItem from '../components/ThemeListItem';
 import Loading from '../components/Loading';
+import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
 
 const Theme = () => {
   const navigate = useNavigate();

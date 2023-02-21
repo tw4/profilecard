@@ -4,10 +4,10 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../services/Firebase';
 import { Links, UserCard } from '../types';
 import Loading from '../components/Loading';
-import DefaultProfile from '../components/ProfileTheme/DefaultProfile';
 import MetaTag from '../components/MetaTag';
 import UserProfileLayout from '../components/layout/UserProfileLayout';
 import UserProfileFooter from '../components/UserProfileFooter';
+import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
 
 const UserProfile = () => {
   const { user } = useParams();
