@@ -1,0 +1,155 @@
+import { FC } from 'react';
+import type { UserCard, Links } from '../../../types';
+import UserProfileLayout from '../../layout/UserProfileLayout';
+import { Avatar, Box, ImageIcon, Link, Text } from '../../../ui-library';
+
+type IProps = {
+  userDeteil: UserCard;
+  linkList: Links[];
+};
+
+const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
+  return (
+    <Box
+      stack="VStack"
+      css={{
+        marginTop: '10%',
+        position: 'relative',
+        height: '60vh',
+        width: '40vh',
+        borderRadius: '8px',
+        border: 'solid Black 1px',
+        backgroundColor: 'White',
+        boxShadow:
+          'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px',
+        '@media screen and (max-width: 768px)': {
+          width: '100%',
+          height: '100vh',
+          marginTop: '0%',
+        },
+      }}
+    >
+      <Box
+        css={{
+          position: 'absolute',
+          height: '20vh',
+          width: '20vh',
+          backgroundColor: 'Red',
+          borderRadius: '100%',
+          bottom: '10%',
+          left: '10%',
+          filter: 'blur(60px)',
+        }}
+      ></Box>
+      <Box
+        css={{
+          position: 'absolute',
+          height: '20vh',
+          width: '20vh',
+          backgroundColor: 'Orange',
+          borderRadius: '100%',
+          top: '10%',
+          right: '10%',
+          filter: 'blur(60px)',
+        }}
+      ></Box>
+      <Box
+        stack="VStack"
+        css={{
+          alignItems: 'center',
+          zIndex: '1',
+          overflow: 'auto',
+          '&::-webkit-scrollbar': {
+            width: '0.2em',
+            backgroundColor: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: 'linear-gradient(to top, Orange, Red)',
+            borderRadius: '0.2em',
+          },
+          '&::-webkit-scrollbar-track': {
+            backgroundColor: 'transparent',
+          },
+        }}
+      >
+        <Avatar
+          variant="profileCard"
+          src={userDeteil?.photoURL}
+          alt={userDeteil?.username}
+        />
+        <Box
+          css={{
+            width: 'fit-content',
+            margin: '5%',
+            padding: '5%',
+            borderRadius: '20px',
+            backdropFilter: 'blur(35px)',
+          }}
+        >
+          <Text>{userDeteil?.name}</Text>
+        </Box>
+        <Box
+          css={{
+            width: 'fit-content',
+            margin: '5%',
+            padding: '5%',
+            borderRadius: '20px',
+            backdropFilter: 'blur(35px)',
+          }}
+        >
+          <Text>{userDeteil?.description}</Text>
+        </Box>
+        <Box
+          stack="VStack"
+          css={{
+            alignItems: 'center',
+            width: 'stretch',
+            margin: '5%',
+            padding: '5%',
+            borderRadius: '20px',
+            backdropFilter: 'blur(35px)',
+          }}
+        >
+          {linkList
+            ? linkList.map(({ title, link }) => {
+                if (title === '' && link === '') return null;
+                const url = new URL(link);
+                const domain = url.hostname;
+                const iconUrl =
+                  domain === 'discord.gg'
+                    ? 'https://cdn-icons-png.flaticon.com/512/3670/3670157.png'
+                    : 'https://' + domain + '/favicon.ico';
+                return (
+                  <Box key={link} css={{ marginTop: '5%' }}>
+                    <Link
+                      linkButton="costomUser"
+                      css={{
+                        display: 'inline',
+                        color: userDeteil?.color,
+                      }}
+                      href={link}
+                    >
+                      {domain !== '' ? (
+                        <Box stack="HStack">
+                          <ImageIcon
+                            src={iconUrl}
+                            css={{ height: '25px', width: '25px' }}
+                            alt={link}
+                          />
+                          <Text>{title === '' ? domain : title}</Text>
+                        </Box>
+                      ) : (
+                        link
+                      )}
+                    </Link>
+                  </Box>
+                );
+              })
+            : null}
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default PremiumProfileCard1;
