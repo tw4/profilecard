@@ -5,9 +5,6 @@ const UserProfileFooter = () => {
     <Box
       stack="HStack"
       css={{
-        position: 'fixed',
-        left: '0',
-        bottom: '0',
         height: '5vh',
         backgroundColor: '#000000',
         padding: '1%',
