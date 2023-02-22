@@ -18,7 +18,7 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
         height: '60vh',
         width: '40vh',
         borderRadius: '8px',
-        border: 'solid Black 1px',
+        border: 'solid #17ca83  1px',
         backgroundColor: 'White',
         boxShadow:
           'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px',
@@ -32,25 +32,25 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
       <Box
         css={{
           position: 'absolute',
-          height: '20vh',
-          width: '20vh',
-          backgroundColor: 'Red',
+          height: '15vh',
+          width: '15vh',
+          backgroundColor: '#abc943',
           borderRadius: '100%',
           bottom: '10%',
           left: '10%',
-          filter: 'blur(60px)',
+          filter: 'blur(50px)',
         }}
       ></Box>
       <Box
         css={{
           position: 'absolute',
-          height: '20vh',
-          width: '20vh',
-          backgroundColor: 'Orange',
+          height: '15vh',
+          width: '15vh',
+          backgroundColor: '#17ca83',
           borderRadius: '100%',
           top: '10%',
           right: '10%',
-          filter: 'blur(60px)',
+          filter: 'blur(50px)',
         }}
       ></Box>
       <Box
@@ -64,7 +64,7 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
             backgroundColor: 'transparent',
           },
           '&::-webkit-scrollbar-thumb': {
-            background: 'linear-gradient(to top, Orange, Red)',
+            background: 'linear-gradient(to top, #abc943, #17ca83)',
             borderRadius: '0.2em',
           },
           '&::-webkit-scrollbar-track': {
@@ -130,10 +130,17 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
                       href={link}
                     >
                       {domain !== '' ? (
-                        <Box stack="HStack">
+                        <Box stack="HStack" css={{ alignItems: 'center' }}>
                           <ImageIcon
                             src={iconUrl}
-                            css={{ height: '25px', width: '25px' }}
+                            css={{
+                              height: '30px',
+                              width: '30px',
+                              '@media screen and (max-width: 768px)': {
+                                height: '50px',
+                                width: '50px',
+                              },
+                            }}
                             alt={link}
                           />
                           <Text>{title === '' ? domain : title}</Text>
