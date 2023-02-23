@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import type { UserCard, Links } from '../../../types';
-import UserProfileLayout from '../../layout/UserProfileLayout';
 import { Avatar, Box, ImageIcon, Link, Text } from '../../../ui-library';
+import linkedIn from '../../../assets/logos/linkedIn.png';
+import discord from '../../../assets/logos/discord.png';
 
 type IProps = {
   userDeteil: UserCard;
@@ -9,6 +10,17 @@ type IProps = {
 };
 
 const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
+  const domainControl = (domain: string) => {
+    switch (domain) {
+      case 'discord.gg':
+        return discord;
+
+      case 'www.linkedin.com':
+        return linkedIn;
+      default:
+        return 'https://' + domain + '/favicon.ico';
+    }
+  };
   return (
     <Box
       stack="VStack"
@@ -115,10 +127,7 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
                 if (title === '' && link === '') return null;
                 const url = new URL(link);
                 const domain = url.hostname;
-                const iconUrl =
-                  domain === 'discord.gg'
-                    ? 'https://cdn-icons-png.flaticon.com/512/3670/3670157.png'
-                    : 'https://' + domain + '/favicon.ico';
+                const iconUrl = domainControl(domain);
                 return (
                   <Box key={link} css={{ marginTop: '5%' }}>
                     <Link
@@ -130,7 +139,14 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
                       href={link}
                     >
                       {domain !== '' ? (
-                        <Box stack="HStack" css={{ alignItems: 'center' }}>
+                        <Box
+                          stack="HStack"
+                          css={{
+                            width: 'inherit',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}
+                        >
                           <ImageIcon
                             src={iconUrl}
                             css={{
