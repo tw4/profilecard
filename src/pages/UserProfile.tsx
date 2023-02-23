@@ -63,7 +63,12 @@ const UserProfile = () => {
         );
 
       default:
-        break;
+        return (
+          <DefaultProfile
+            linkList={linkList}
+            userDeteil={userDeteil as UserCard}
+          />
+        );
     }
   };
 
