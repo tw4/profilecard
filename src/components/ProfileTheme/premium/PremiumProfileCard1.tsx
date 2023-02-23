@@ -143,7 +143,9 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
                             }}
                             alt={link}
                           />
-                          <Text>{title === '' ? domain : title}</Text>
+                          <Text css={{ fontWeight: 'bold' }}>
+                            {title === '' ? domain : title}
+                          </Text>
                         </Box>
                       ) : (
                         link
