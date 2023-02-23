@@ -8,6 +8,7 @@ import MetaTag from '../components/MetaTag';
 import UserProfileLayout from '../components/layout/UserProfileLayout';
 import UserProfileFooter from '../components/UserProfileFooter';
 import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
+import PremiumProfileCard1 from '../components/ProfileTheme/premium/PremiumProfileCard1';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -16,6 +17,7 @@ const UserProfile = () => {
   const [userDeteil, setUserDeteil] = useState<UserCard>();
   const [linkList, setLinkList] = useState<Links[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [userTheme, setUserTheme] = useState<string>('');
 
   useEffect(() => {
     getUserDeteilFromDB(user || '');
@@ -37,9 +39,32 @@ const UserProfile = () => {
     querySnapshot.forEach(async doc => {
       await setUserDeteil(doc.data() as UserCard);
       await setLinkList(doc.data().links);
+      await setUserTheme(doc.data().theme);
     });
 
     setLoading(false);
+  };
+
+  const theme = (theme: string) => {
+    switch (theme) {
+      case 'DefaultProfile':
+        return (
+          <DefaultProfile
+            linkList={linkList}
+            userDeteil={userDeteil as UserCard}
+          />
+        );
+      case 'PremiumProfileCard1':
+        return (
+          <PremiumProfileCard1
+            linkList={linkList}
+            userDeteil={userDeteil as UserCard}
+          />
+        );
+
+      default:
+        break;
+    }
   };
 
   return loading ? (
@@ -53,10 +78,7 @@ const UserProfile = () => {
           }`}
           content={userDeteil ? userDeteil.username : 'ProfileCard'}
         />
-        <DefaultProfile
-          linkList={linkList}
-          userDeteil={userDeteil as UserCard}
-        />
+        {theme(userTheme)}
       </UserProfileLayout>
       <UserProfileFooter />
     </>
