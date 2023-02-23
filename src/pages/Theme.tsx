@@ -5,12 +5,19 @@ import { Box } from '../ui-library';
 import { useState, useEffect } from 'react';
 import { UserLoginValidator } from '../utils/Validator/UserValidator';
 import { useNavigate } from 'react-router-dom';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 import { db } from '../services/Firebase';
 import type { Links, UserCard } from '../types';
 import ThemeListItem from '../components/ThemeListItem';
 import Loading from '../components/Loading';
 import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
+import PremiumProfileCard1 from '../components/ProfileTheme/premium/PremiumProfileCard1';
 
 const Theme = () => {
   const navigate = useNavigate();
@@ -56,8 +63,23 @@ const Theme = () => {
       setUsername(doc.data().username);
       setUserTheme(doc.data().theme);
       setLinks(doc.data().links);
+      setUserTheme(doc.data().theme);
     }
     setLoading(false);
+  };
+
+  const updateTheme = async (cardName: string) => {
+    const q = query(
+      collection(db, 'users'),
+      where('userID', '==', user?.userID),
+      where('token', '==', token)
+    );
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      const doc = querySnapshot.docs[0];
+      updateDoc(doc.ref, { theme: cardName });
+    }
+    alert('Your theme has been changed');
   };
 
   return loading ? (
@@ -66,8 +88,11 @@ const Theme = () => {
     <Layout>
       <UserNavbar />
       <Box stack="Grid">
-        <ThemeListItem click={() => null}>
+        <ThemeListItem click={() => updateTheme('DefaultProfile')}>
           <DefaultProfile linkList={links} userDeteil={user as UserCard} />
+        </ThemeListItem>
+        <ThemeListItem click={() => updateTheme('PremiumProfileCard1')}>
+          <PremiumProfileCard1 linkList={links} userDeteil={user as UserCard} />
         </ThemeListItem>
       </Box>
     </Layout>
