@@ -1,21 +1,65 @@
-import { Box, Text, Link } from "../ui-library";
+import { Box, Text, Link } from '../ui-library';
+import FooterItem from './FooterItem';
+import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <Box
       stack="HStack"
       css={{
-        padding: "1%",
-        justifyContent: "center",
-        "@media screen and (max-width: 768px)": {
-          flexDirection: "row",
-          marginTop: "5%",
+        backgroundColor: '#2c2936',
+        borderTopLeftRadius: '50px',
+        borderTopRightRadius: '50px',
+        padding: '1%',
+        justifyContent: 'space-around',
+        '@media screen and (max-width: 768px)': {
+          flexDirection: 'column',
+          marginTop: '5%',
         },
-      }}>
-      <Text color="light">contact :</Text>
-      <Link color="light" href="http://www.discord.profilecard.co/">
-        Discord
-      </Link>
+      }}
+    >
+      <Box
+        stack="VStack"
+        css={{
+          width: '33%',
+          '@media screen and (max-width: 768px)': {
+            width: '100%',
+          },
+        }}
+      >
+        <Text color="light" size="4" as="h4">
+          Profile Card
+        </Text>
+        <Box
+          stack="HStack"
+          css={{
+            justifyContent: 'space-evenly',
+            marginTop: '2.5%',
+          }}
+        >
+          <Link href="https://www.discord.profilecard.co/">
+            <FaDiscord size="30px" color="white" />
+          </Link>
+          <Link href="https://twitter.com/theprofilecard">
+            <FaTwitter size="30px" color="white" />
+          </Link>
+        </Box>
+        <Box stack="HStack"></Box>
+      </Box>
+      <Box stack="VStack">
+        <FooterItem
+          href="https://www.discord.profilecard.co/"
+          title="Help & Support"
+        />
+        <FooterItem
+          href="https://www.discord.profilecard.co/"
+          title="Feedback"
+        />
+      </Box>
+      <Box stack="VStack">
+        <FooterItem href="https://faq.profilecard.co/" title="FAQ" />
+        <FooterItem href="https://privacy.profilecard.co/" title="Privacy" />
+      </Box>
     </Box>
   );
 };
