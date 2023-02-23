@@ -71,13 +71,7 @@ const Login = () => {
         description: '',
         color: '',
         photoURL: res.user.photoURL,
-        links: [
-          { link: '', title: '' },
-          { link: '', title: '' },
-          { link: '', title: '' },
-          { link: '', title: '' },
-          { link: '', title: '' },
-        ],
+        links: [],
       });
     } else {
       const doc = querySnapshot.docs[0];
