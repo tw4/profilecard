@@ -7,7 +7,6 @@ import { clearUserState } from '../features/user/UserSlice';
 import React, { useEffect, useState } from 'react';
 import { UserLoginValidator } from '../utils/Validator/UserValidator';
 import avatar from '../assets/logos/avatar.png';
-import { LinksValidator } from '../utils/Validator/FormValidator';
 import { Links } from '../types';
 import {
   collection,
@@ -23,6 +22,8 @@ import Footer from '../components/Footer';
 import UserNavbar from '../components/UserNavbar';
 import CenterLayout from '../components/layout/CenterLayout';
 import Loading from '../components/Loading';
+import GradientButton from '../components/GradientButton';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -34,13 +35,7 @@ const Profile = () => {
   const [description, setDescription] = useState<string>('');
   const [color, setColor] = useState<string>('#2596be');
   const [token, setToken] = useState<string>(sessionStorage.getItem('token')!);
-  const [links, setLinks] = useState<Links[]>([
-    { link: '', title: '' },
-    { link: '', title: '' },
-    { link: '', title: '' },
-    { link: '', title: '' },
-    { link: '', title: '' },
-  ]);
+  const [links, setLinks] = useState<Links[]>([]);
 
   const [validatorError, setValidatorError] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -126,6 +121,41 @@ const Profile = () => {
     });
   };
 
+  // Check the link if it is missing
+  // it will add https and check it is correct
+  const checkLinkFormat = (val: Links) => {
+    setValidatorError([]);
+    const errorList: string[] = [];
+    const regex = /^(https?:\/\/)/;
+
+    if (val.link !== '') {
+      if (!regex.test(val.link)) {
+        val.link = 'http://' + val.link;
+      }
+      if (!regex.test(val.link)) {
+        errorList.push(val.link);
+      }
+    } else {
+      errorList.push('link cannot be empty');
+    }
+
+    setValidatorError(errorList);
+    return val;
+  };
+
+  // add to link
+  const addToLink = () => {
+    if (links.length <= 4) {
+      const tmp = [...links, { link: '', title: '' } as Links];
+      setLinks(tmp);
+    }
+  };
+
+  const deleteLink = (idx: number) => {
+    const tmp = links.filter((val, index) => index !== idx);
+    setLinks(tmp);
+  };
+
   // Updates the user information
   // in the Firebase database
   // if the user ID and token match
@@ -136,10 +166,19 @@ const Profile = () => {
       alert('Username cannot be empty');
     }
 
-    const validatorErr: string[] = LinksValidator(links);
-    setValidatorError(LinksValidator(links));
+    let linkList: Links[] = [];
 
-    if (validatorErr.length === 0) {
+    links.map(val => {
+      if (val.link !== '') {
+        linkList.push(val);
+      }
+    });
+
+    setLinks(linkList);
+
+    linkList = await linkList.map(link => checkLinkFormat(link));
+
+    if (validatorError.length === 0) {
       try {
         const q = query(
           collection(db, 'users'),
@@ -157,7 +196,7 @@ const Profile = () => {
           description: description,
           color: color,
           photoURL: user?.photoURL,
-          links: links,
+          links: linkList,
         });
         navigate('/' + username);
       } catch (error) {
@@ -403,15 +442,23 @@ const Profile = () => {
           >
             {links.map((val, index) => {
               return (
-                <LinkInput
-                  key={index}
-                  link={val.link}
-                  linkName={'link' + index}
-                  title={val.title}
-                  titleName={'title' + index}
-                  linkOnChange={linkHandler}
-                  titleOnChange={titlesValidator}
-                />
+                <Box stack="HStack" css={{ alignItems: 'center' }}>
+                  <LinkInput
+                    key={index}
+                    link={val.link}
+                    linkName={'link' + index}
+                    title={val.title}
+                    titleName={'title' + index}
+                    linkOnChange={linkHandler}
+                    titleOnChange={titlesValidator}
+                  />
+                  <Button
+                    onClick={() => deleteLink(index)}
+                    css={{ width: '10%' }}
+                  >
+                    <BsFillTrashFill color="#F67280" />
+                  </Button>
+                </Box>
               );
             })}
           </Box>
@@ -422,6 +469,11 @@ const Profile = () => {
                 })
               : null}
           </Box>
+          <GradientButton
+            content="Add link"
+            onClik={() => addToLink()}
+            size={4}
+          />
           <Button
             disabled={loading}
             onClick={() => updateButton()}
