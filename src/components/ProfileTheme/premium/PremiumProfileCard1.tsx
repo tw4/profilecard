@@ -160,7 +160,11 @@ const PremiumProfileCard1: FC<IProps> = ({ userDeteil, linkList }) => {
                             alt={link}
                           />
                           <Text css={{ fontWeight: 'bold' }}>
-                            {title === '' ? domain : title}
+                            {title === ''
+                              ? domain.includes('www.')
+                                ? domain.split('.')[1]
+                                : domain.split('.')[0]
+                              : title}
                           </Text>
                         </Box>
                       ) : (
