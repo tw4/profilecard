@@ -32,15 +32,14 @@ const UserProfile = () => {
     const q = query(collection(db, 'users'), where('username', '==', userName));
     const querySnapshot = await getDocs(q);
 
-    if (querySnapshot.size === 0) {
+    if (querySnapshot.empty) {
       navigate('/404');
     }
+    const doc = querySnapshot.docs[0];
 
-    querySnapshot.forEach(async doc => {
-      await setUserDeteil(doc.data() as UserCard);
-      await setLinkList(doc.data().links);
-      await setUserTheme(doc.data().theme);
-    });
+    setUserDeteil(doc.data() as UserCard);
+    setLinkList(doc.data().links);
+    setUserTheme(doc.data().theme);
 
     setLoading(false);
   };
