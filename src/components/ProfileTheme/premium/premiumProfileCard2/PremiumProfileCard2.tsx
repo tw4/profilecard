@@ -114,6 +114,7 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
           }}
         >
           <Box
+            onClick={() => modalControl()}
             css={{
               position: 'absolute',
               height: '100%',
@@ -124,6 +125,7 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
             }}
           ></Box>
           <Box
+            onClick={() => modalControl()}
             css={{
               position: 'absolute',
               left: '0',
