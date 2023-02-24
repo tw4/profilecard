@@ -19,6 +19,21 @@ export const Button = styled('button', {
       delete: {
         color: '#F67280',
       },
+      blue: {
+        color: 'White',
+        backgroundColor: 'rgb(87, 106, 234)',
+        borderRadius: '8px',
+        border: 'none',
+        '&:hover': {
+          backgroundColor: 'rgb(71, 86, 189)',
+        },
+      },
+      disable: {
+        color: 'WhiteSmoke',
+        backgroundColor: 'Gray',
+        borderRadius: '8px',
+        border: 'none',
+      },
     },
     color: {
       purple: {
