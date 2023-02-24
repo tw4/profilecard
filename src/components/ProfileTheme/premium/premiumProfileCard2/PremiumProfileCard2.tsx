@@ -200,7 +200,7 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
           <Box css={{ width: '100%', textAlign: 'end' }}>
             <Button
               onClick={() => modalControl()}
-              variant={userDeteil?.publicEmail === '' ? 'disable' : 'blue'}
+              variant="blue"
               size={4}
               css={{
                 width: '20%',
