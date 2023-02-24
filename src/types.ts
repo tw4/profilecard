@@ -12,4 +12,5 @@ export type UserCard = {
   color: string;
   links: Links[];
   photoURL: string;
+  publicEmail: string;
 };

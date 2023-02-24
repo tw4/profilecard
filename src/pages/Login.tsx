@@ -72,6 +72,7 @@ const Login = () => {
         color: '',
         photoURL: res.user.photoURL,
         links: [],
+        publicEmail: '',
       });
     } else {
       const doc = querySnapshot.docs[0];
