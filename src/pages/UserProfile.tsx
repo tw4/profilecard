@@ -9,6 +9,8 @@ import UserProfileLayout from '../components/layout/UserProfileLayout';
 import UserProfileFooter from '../components/UserProfileFooter';
 import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
 import PremiumProfileCard1 from '../components/ProfileTheme/premium/PremiumProfileCard1';
+import Layout from '../components/layout/Layout';
+import PremiumProfileCard2 from '../components/ProfileTheme/premium/premiumProfileCard2/PremiumProfileCard2';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -44,47 +46,52 @@ const UserProfile = () => {
     setLoading(false);
   };
 
-  const theme = (theme: string) => {
-    switch (theme) {
-      case 'DefaultProfile':
-        return (
-          <DefaultProfile
-            linkList={linkList}
-            userDeteil={userDeteil as UserCard}
-          />
-        );
-      case 'PremiumProfileCard1':
-        return (
-          <PremiumProfileCard1
-            linkList={linkList}
-            userDeteil={userDeteil as UserCard}
-          />
-        );
+  // const theme = (theme: string) => {
+  //   switch (theme) {
+  //     case 'DefaultProfile':
+  //       return (
+  //         <DefaultProfile
+  //           linkList={linkList}
+  //           userDeteil={userDeteil as UserCard}
+  //         />
+  //       );
+  //     case 'PremiumProfileCard1':
+  //       return (
+  //         <Layout>
+  //           <PremiumProfileCard2
+  //             linkList={linkList}
+  //             userDeteil={userDeteil as UserCard}
+  //           />
+  //         </Layout>
+  //       );
 
-      default:
-        return (
-          <DefaultProfile
-            linkList={linkList}
-            userDeteil={userDeteil as UserCard}
-          />
-        );
-    }
-  };
+  //     default:
+  //       return (
+  //         <UserProfileLayout>
+  //           <DefaultProfile
+  //             linkList={linkList}
+  //             userDeteil={userDeteil as UserCard}
+  //           />
+  //         </UserProfileLayout>
+  //       );
+  //   }
+  // };
 
   return loading ? (
     <Loading />
   ) : (
     <>
-      <UserProfileLayout>
-        <MetaTag
-          title={`ProfileCard  ${
-            userDeteil ? userDeteil.username : 'ProfileCard'
-          }`}
-          content={userDeteil ? userDeteil.username : 'ProfileCard'}
-        />
-        {theme(userTheme)}
-      </UserProfileLayout>
-      <UserProfileFooter />
+      <MetaTag
+        title={`ProfileCard  ${
+          userDeteil ? userDeteil.username : 'ProfileCard'
+        }`}
+        content={userDeteil ? userDeteil.username : 'ProfileCard'}
+      />
+      <PremiumProfileCard2
+        linkList={linkList}
+        userDeteil={userDeteil as UserCard}
+      />
+      {/* <UserProfileFooter /> */}
     </>
   );
 };

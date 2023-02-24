@@ -5,7 +5,6 @@ import { useAppDispatch } from '../store';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../services/Firebase';
 import { clearUserState } from '../features/user/UserSlice';
-import UserNavbarItem from './UserNavbarItem';
 
 const UserNavbar = () => {
   const dispatch = useAppDispatch();
@@ -62,8 +61,8 @@ const UserNavbar = () => {
           },
         }}
       >
-        <UserNavbarItem to="/profile" title="Home" />
-        <UserNavbarItem to="/theme" title="Theme" />
+        {/* <UserNavbarItem to="/profile" title="Home" />
+        <UserNavbarItem to="/theme" title="Theme" /> */}
       </Box>
       <Button
         onClick={() => logout()}
