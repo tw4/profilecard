@@ -36,6 +36,7 @@ const Profile = () => {
   const [color, setColor] = useState<string>('#2596be');
   const [token, setToken] = useState<string>(sessionStorage.getItem('token')!);
   const [links, setLinks] = useState<Links[]>([]);
+  const [publicEmail, setPublicEmail] = useState<string>('');
 
   const [validatorError, setValidatorError] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -77,6 +78,7 @@ const Profile = () => {
       setDescription(doc.data().description);
       setColor(doc.data().color);
       setLinks(doc.data().links);
+      setPublicEmail(doc.data().publicEmail || '');
     }
     setLoading(false);
   };
@@ -197,6 +199,7 @@ const Profile = () => {
           color: color,
           photoURL: user?.photoURL,
           links: linkList,
+          publicEmail: publicEmail,
         });
         navigate('/' + username);
       } catch (error) {
@@ -221,8 +224,19 @@ const Profile = () => {
   ) => {
     setDescription(e.target.value);
     if (description.length > 199) {
-      alert('name must be maximum length 200');
+      alert('description must be maximum length 200');
       await setDescription('');
+    }
+  };
+
+  // this function makes maximum length control for public email
+  const publicEmailValidator = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPublicEmail(e.target.value);
+    if (publicEmail.length > 199) {
+      alert('public email must be maximum length 200');
+      await setPublicEmail('');
     }
   };
 
@@ -386,7 +400,6 @@ const Profile = () => {
           >
             Description
           </Text>
-
           <Input
             onChange={descriptionValidator}
             value={description}
@@ -408,6 +421,41 @@ const Profile = () => {
             }}
           >
             {description.length + '/200'}
+          </Text>
+          <Text
+            css={{
+              width: '50%',
+              marginTop: '5%',
+              textAlign: 'left',
+              '@media screen and (max-width: 768px)': {
+                width: '90%',
+              },
+            }}
+          >
+            Public Email - Optional
+          </Text>
+
+          <Input
+            onChange={publicEmailValidator}
+            value={publicEmail}
+            css={{
+              width: '50%',
+              '@media screen and (max-width: 768px)': {
+                width: '90%',
+              },
+            }}
+          />
+          <Text
+            css={{
+              width: '50%',
+              textAlign: 'right',
+              marginTop: '1%',
+              '@media screen and (max-width: 768px)': {
+                width: '90%',
+              },
+            }}
+          >
+            {publicEmail.length + '/200'}
           </Text>
           <Box
             stack="VStack"
