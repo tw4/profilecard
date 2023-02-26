@@ -39,7 +39,7 @@ const Navbar = () => {
       >
         <NavbarItem href="/" content="Home" />
         <NavbarItem href="/about" content="About" />
-        <NavbarItem href="https://faq.profilecard.co/" content="Faq" />
+        <NavbarItem href="https://faq.profilecard.co/" content="FAQ" />
       </Box>
     </Box>
   );
