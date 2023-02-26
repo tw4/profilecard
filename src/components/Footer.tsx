@@ -7,9 +7,8 @@ const Footer = () => {
     <Box
       stack="HStack"
       css={{
-        backgroundColor: '#2c2936',
-        borderTopLeftRadius: '50px',
-        borderTopRightRadius: '50px',
+        alignItems: 'center',
+        borderTop: '1px solid rgba(196, 196, 196, 0.1)',
         padding: '1%',
         justifyContent: 'space-around',
         '@media screen and (max-width: 768px)': {
@@ -51,6 +50,12 @@ const Footer = () => {
       <Box stack="VStack">
         <FooterItem href="https://faq.profilecard.co/" title="FAQ" />
         <FooterItem href="https://privacy.profilecard.co/" title="Privacy" />
+      </Box>
+      <Box stack="VStack">
+        <Text color="light">© Copyright 2023 Profilecard.co</Text>
+        <Link href="https://mertsabinov.com/" color="light">
+          Mert Sabinov
+        </Link>
       </Box>
     </Box>
   );
