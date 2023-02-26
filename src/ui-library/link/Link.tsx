@@ -16,7 +16,11 @@ export const Link = styled('a', {
 
     color: {
       light: {
-        color: 'White',
+        color: '#C0C2CE',
+        textDecoration: 'none',
+        '&:hover': {
+          color: 'White',
+        },
       },
       blue: {
         color: 'LightBlue',
