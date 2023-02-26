@@ -20,7 +20,7 @@ const globalStyles = globalCss({
       backgroundColor: 'transparent',
     },
   },
-  body: { fontFamily: 'Open Sans, sans-serif', backgroundColor: '#1D1A27' },
+  body: { fontFamily: 'Open Sans, sans-serif', backgroundColor: '#13111A' },
 });
 
 export default globalStyles;
