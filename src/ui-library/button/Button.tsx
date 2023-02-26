@@ -14,7 +14,7 @@ export const Button = styled('button', {
   variants: {
     variant: {
       gradient: {
-        backgroundColor: '#1D1A27',
+        backgroundColor: '#13111A',
       },
       delete: {
         color: '#F67280',
