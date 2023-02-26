@@ -19,11 +19,11 @@ import {
 import { SketchPicker } from 'react-color';
 import LinkInput from '../components/LinkInput';
 import Footer from '../components/Footer';
-import UserNavbar from '../components/UserNavbar';
 import CenterLayout from '../components/layout/CenterLayout';
 import Loading from '../components/Loading';
 import GradientButton from '../components/GradientButton';
 import { BsFillTrashFill } from 'react-icons/bs';
+import Navbar from '../components/Navbar';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -283,7 +283,7 @@ const Profile = () => {
     <Loading />
   ) : (
     <CenterLayout>
-      <UserNavbar />
+      <Navbar />
       <Box
         stack="VStack"
         css={{

@@ -7,7 +7,6 @@ import { setUserState, UsersState } from '../features/user/UserSlice';
 import { useEffect } from 'react';
 import { UserLoginValidator } from '../utils/Validator/UserValidator';
 import MetaTag from '../components/MetaTag';
-import Navbar from '../components/LandingPage/Navbar';
 import HeaderSide from '../components/LandingPage/HeaderSide';
 import Features from '../components/LandingPage/Features';
 import Produckt from '../components/LandingPage/Produckt';
@@ -22,6 +21,7 @@ import {
   setDoc,
 } from 'firebase/firestore';
 import Layout from '../components/layout/Layout';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -87,21 +87,23 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <>
       <MetaTag
         title="Create and share Profile Card Free - ProfileCard.co"
         content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
       />
-      <Box stack="VStack">
+      <Layout>
         <Navbar />
-        <Box stack="VStack" css={{ marginTop: '10%' }}>
-          <HeaderSide login={() => login()} />
-          <Features />
-          <Produckt />
-          <Footer />
+        <Box stack="VStack">
+          <Box stack="VStack" css={{ marginTop: '10%' }}>
+            <HeaderSide login={() => login()} />
+            <Features />
+            <Produckt />
+          </Box>
         </Box>
-      </Box>
-    </Layout>
+      </Layout>
+      <Footer />
+    </>
   );
 };
 

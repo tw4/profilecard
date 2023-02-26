@@ -1,6 +1,6 @@
 import { User } from 'firebase/auth';
 import Layout from '../components/layout/Layout';
-import UserNavbar from '../components/UserNavbar';
+import UserNavbar from '../components/Navbar';
 import { Box } from '../ui-library';
 import { useState, useEffect } from 'react';
 import { UserLoginValidator } from '../utils/Validator/UserValidator';
