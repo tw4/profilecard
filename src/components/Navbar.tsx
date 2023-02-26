@@ -5,10 +5,31 @@ import { useAppDispatch } from '../store';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../services/Firebase';
 import { clearUserState } from '../features/user/UserSlice';
+import NavbarItem from './NavbarItem';
+import { useEffect, useState } from 'react';
 
-const UserNavbar = () => {
+const Navbar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const [login, setLogin] = useState<boolean>(false);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
+    try {
+      const user = JSON.parse(sessionStorage.getItem('user') || '');
+      if (user !== '') {
+        setLogin(true);
+      } else {
+        setLogin(false);
+      }
+    } catch (error) {
+      setLogin(false);
+    }
+  };
 
   const logout = () => {
     signOut(auth);
@@ -21,6 +42,7 @@ const UserNavbar = () => {
     <Box
       stack="HStack"
       css={{
+        height: '5vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -33,8 +55,10 @@ const UserNavbar = () => {
         stack="HStack"
         css={{
           width: '25%',
+          alignItems: 'center',
           '@media screen and (max-width: 768px)': {
             flexDirection: 'row',
+            width: '10%',
           },
         }}
       >
@@ -55,7 +79,8 @@ const UserNavbar = () => {
       <Box
         stack="HStack"
         css={{
-          justifyContent: 'center',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
           '@media screen and (max-width: 768px)': {
             flexDirection: 'row',
           },
@@ -63,22 +88,30 @@ const UserNavbar = () => {
       >
         {/* <UserNavbarItem to="/profile" title="Home" />
         <UserNavbarItem to="/theme" title="Theme" /> */}
+        {login ? null : <NavbarItem href="/" content="Home" />}
+        {login ? <NavbarItem href="/profile" content="Profile" /> : null}
+        <NavbarItem href="/about" content="About" />
+        <NavbarItem href="https://faq.profilecard.co/" content="FAQ" />
       </Box>
-      <Button
-        onClick={() => logout()}
-        size="4"
-        css={{
-          width: '25%',
-          padding: '0.5%',
-          '@media screen and (max-width: 768px)': {
-            width: '50%',
-          },
-        }}
-      >
-        Logout
-      </Button>
+      <Box css={{ width: '25%' }}>
+        {login ? (
+          <Button
+            onClick={() => logout()}
+            size="4"
+            css={{
+              padding: '1%',
+              '@media screen and (max-width: 768px)': {
+                width: '100%',
+                borderRadius: '8px',
+              },
+            }}
+          >
+            Logout
+          </Button>
+        ) : null}
+      </Box>
     </Box>
   );
 };
 
-export default UserNavbar;
+export default Navbar;
