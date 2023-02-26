@@ -3,10 +3,15 @@ import Layout from '../components/layout/Layout';
 import Navbar from '../components/Navbar';
 import { Box, Link, Text } from '../ui-library';
 import logo from '../assets/logos/profilecardrgb.svg';
+import MetaTag from '../components/MetaTag';
 
 const About = () => {
   return (
     <>
+      <MetaTag
+        title="About Us | ProfileCard.co - Your Simple Business Card"
+        content="Learn more about ProfileCard.co and our vision to create a tool that enables everyone to easily create their own personal profiles and share the information they want. Meet our team of experts in technical skills, customer service, and user experience, and discover how our guiding principles of honesty, transparency, and reliability drive our success. Contact us with any questions or feedback - we'd love to hear from you."
+      />
       <Navbar />
       <Layout>
         <Box stack="VStack">
