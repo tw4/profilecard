@@ -1,20 +1,22 @@
-import { Box, Text } from "../../ui-library";
-import profileCardPurview from "../../assets/profileCardPurview.svg";
+import { Box, Text } from '../../ui-library';
+import profileCardPurview from '../../assets/profileCardPurview.svg';
 
 const Produckt = () => {
   return (
-    <Box stack="HStack" css={{ marginTop: "10%", marginBottom: "10%" }}>
+    <Box stack="HStack" css={{ marginTop: '10%', marginBottom: '10%' }}>
       <Box stack="VStack" css={{}}>
         <Text
           size="1"
           color="light"
-          css={{ fontWeight: "bold", textAlign: "start" }}>
+          css={{ fontWeight: 'bold', textAlign: 'start' }}
+        >
           Express yourself by changing your background color - Profilecard.co
         </Text>
         <Text
           color="grey"
           size="3"
-          css={{ textAlign: "justify", marginRight: "5%" }}>
+          css={{ textAlign: 'justify', marginRight: '5%' }}
+        >
           Personalize your profile and achieve a professional look with
           Profilecard.co! Change your background color to whatever you like, and
           express yourself in the best way possible. Instead of boring white or
@@ -29,19 +31,27 @@ const Produckt = () => {
       <Box
         stack="VStack"
         css={{
-          background: "linear-gradient(to right, #CE4DA4, #7353E5)",
-          borderRadius: "20px",
-          justifyContent: "center",
-          alignItems: "center",
-          "@media screen and (max-width: 768px)": {
-            marginTop: "10%",
+          background: 'linear-gradient(to right, #CE4DA4, #7353E5)',
+          borderRadius: '20px',
+          justifyContent: 'center',
+          alignItems: 'center',
+          '@media screen and (max-width: 768px)': {
+            marginTop: '10%',
           },
-        }}>
+        }}
+      >
         <img
           src={profileCardPurview}
-          width="50%"
-          height="50%"
+          width="35%"
+          height="35%"
           alt="profile card purview"
+          style={{
+            marginTop: '2.5%',
+            marginBottom: '2.5%',
+            borderRadius: '10px',
+            boxShadow:
+              'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
+          }}
         />
       </Box>
     </Box>

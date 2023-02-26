@@ -18,22 +18,14 @@ const Footer = () => {
         },
       }}
     >
-      <Box
-        stack="VStack"
-        css={{
-          width: '33%',
-          '@media screen and (max-width: 768px)': {
-            width: '100%',
-          },
-        }}
-      >
+      <Box stack="VStack">
         <Text color="light" size="4" as="h4">
           Profile Card
         </Text>
         <Box
           stack="HStack"
           css={{
-            justifyContent: 'space-evenly',
+            justifyContent: 'center',
             marginTop: '2.5%',
           }}
         >
