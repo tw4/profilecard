@@ -5,12 +5,7 @@ import { db } from '../services/Firebase';
 import { Links, UserCard } from '../types';
 import Loading from '../components/Loading';
 import MetaTag from '../components/MetaTag';
-import UserProfileLayout from '../components/layout/UserProfileLayout';
-import UserProfileFooter from '../components/UserProfileFooter';
-import DefaultProfile from '../components/ProfileTheme/free/DefaultProfile';
-import PremiumProfileCard1 from '../components/ProfileTheme/premium/PremiumProfileCard1';
-import Layout from '../components/layout/Layout';
-import PremiumProfileCard2 from '../components/ProfileTheme/premium/premiumProfileCard2/PremiumProfileCard2';
+import PremiumProfileCard from '../components/ProfileTheme/premium/premiumProfileCard2/PremiumProfileCard';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -19,7 +14,6 @@ const UserProfile = () => {
   const [userDeteil, setUserDeteil] = useState<UserCard>();
   const [linkList, setLinkList] = useState<Links[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [userTheme, setUserTheme] = useState<string>('');
 
   useEffect(() => {
     getUserDeteilFromDB(user || '');
@@ -41,41 +35,8 @@ const UserProfile = () => {
 
     setUserDeteil(doc.data() as UserCard);
     setLinkList(doc.data().links);
-    setUserTheme(doc.data().theme);
-
     setLoading(false);
   };
-
-  // const theme = (theme: string) => {
-  //   switch (theme) {
-  //     case 'DefaultProfile':
-  //       return (
-  //         <DefaultProfile
-  //           linkList={linkList}
-  //           userDeteil={userDeteil as UserCard}
-  //         />
-  //       );
-  //     case 'PremiumProfileCard1':
-  //       return (
-  //         <Layout>
-  //           <PremiumProfileCard2
-  //             linkList={linkList}
-  //             userDeteil={userDeteil as UserCard}
-  //           />
-  //         </Layout>
-  //       );
-
-  //     default:
-  //       return (
-  //         <UserProfileLayout>
-  //           <DefaultProfile
-  //             linkList={linkList}
-  //             userDeteil={userDeteil as UserCard}
-  //           />
-  //         </UserProfileLayout>
-  //       );
-  //   }
-  // };
 
   return loading ? (
     <Loading />
@@ -87,11 +48,10 @@ const UserProfile = () => {
         }`}
         content={userDeteil ? userDeteil.username : 'ProfileCard'}
       />
-      <PremiumProfileCard2
+      <PremiumProfileCard
         linkList={linkList}
         userDeteil={userDeteil as UserCard}
       />
-      {/* <UserProfileFooter /> */}
     </>
   );
 };
