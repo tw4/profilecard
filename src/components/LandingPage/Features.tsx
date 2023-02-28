@@ -1,5 +1,5 @@
 import { Box } from '../../ui-library';
-import Card from '../Card';
+import Card from './Card';
 
 const Features = () => {
   return (
