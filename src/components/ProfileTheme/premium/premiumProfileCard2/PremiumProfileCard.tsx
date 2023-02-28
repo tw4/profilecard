@@ -191,6 +191,7 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
               Share <ImShare size={15} style={{ cursor: 'pointer' }} />
             </Button>
             <Button
+              disabled={userDeteil?.publicEmail === '' ? true : false}
               onClick={() =>
                 (window.location.href = `mailto:${userDeteil?.publicEmail}`)
               }
@@ -207,7 +208,9 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
                 },
               }}
             >
-              Send Email
+              {userDeteil?.publicEmail === ''
+                ? 'Email not available'
+                : 'Send Email'}
             </Button>
           </Box>
         </Box>
