@@ -1,13 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 import type { UserCard, Links } from '../../../../types';
 import { Avatar, Box, Button, ImageIcon, Text } from '../../../../ui-library';
-import linkedIn from '../../../../assets/logos/linkedIn.png';
-import discord from '../../../../assets/logos/discord.png';
-import PremiumProfileCard2LinkItem from './PremiumProfileCardLinkItem';
 import { keyframes } from '@stitches/react';
 import QRCode from 'qrcode';
 import { ImDownload, ImShare, ImCopy } from 'react-icons/im';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import PremiumProfileCardLinkList from './PremiumProfileCardLinkList';
 
 type IProps = {
   userDeteil: UserCard;
@@ -24,19 +22,6 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
   useEffect(() => {
     generateQRCode();
   }, []);
-
-  const domainControl = (domain: string) => {
-    switch (domain) {
-      case 'discord.gg':
-        return discord;
-      case 'www.linkedin.com':
-        return linkedIn;
-      case 'linkedin.com':
-        return linkedIn;
-      default:
-        return 'https://' + domain + '/favicon.ico';
-    }
-  };
 
   const modalControl = () => {
     if (modal === false) {
@@ -279,39 +264,10 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
           animation: `${sectionOne} 1.2s ease-in-out`,
         }}
       >
-        {linkList
-          ? linkList.map(({ title, link }) => {
-              if (title === '' && link === '') return null;
-              const url = new URL(link);
-              const domain = url.hostname;
-              const iconUrl = domainControl(domain);
-              return (
-                <Box
-                  key={link}
-                  css={{
-                    margin: '5%',
-                    animation: `${sectionOne} 1.5s ease-in-out`,
-                    '@media screen and (max-width: 400px)': {
-                      width: '75%',
-                    },
-                  }}
-                >
-                  <PremiumProfileCard2LinkItem
-                    link={link}
-                    iconUrl={iconUrl}
-                    userColor={userDeteil?.color}
-                    title={
-                      title === ''
-                        ? domain.includes('www.')
-                          ? domain.split('.')[1]
-                          : domain.split('.')[0]
-                        : title
-                    }
-                  />
-                </Box>
-              );
-            })
-          : null}
+        <PremiumProfileCardLinkList
+          linkList={linkList}
+          userDeteil={userDeteil}
+        />
       </Box>
     </Box>
   );
