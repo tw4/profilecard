@@ -4,7 +4,6 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import UserProfile from './pages/UserProfile';
 import NotFound from './pages/404';
-import Theme from './pages/Theme';
 import About from './pages/About';
 
 const App = () => {
@@ -14,7 +13,6 @@ const App = () => {
       <Route path="/" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/about" element={<About />} />
-      {/* <Route path="/theme" element={<Theme />} /> */}
       <Route path="/:user" element={<UserProfile />} />
       <Route path="/404" element={<NotFound />} />
     </Routes>
