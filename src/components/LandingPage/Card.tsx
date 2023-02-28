@@ -1,4 +1,4 @@
-import { Box, Text } from '../ui-library';
+import { Box, Text } from '../../ui-library';
 import type { FC } from 'react';
 
 type IProps = {
