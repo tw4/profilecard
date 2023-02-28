@@ -1,16 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import type { UserCard, Links } from '../../../../types';
-import {
-  Avatar,
-  Box,
-  Button,
-  ImageIcon,
-  Link,
-  Text,
-} from '../../../../ui-library';
+import { Avatar, Box, Button, ImageIcon, Text } from '../../../../ui-library';
 import linkedIn from '../../../../assets/logos/linkedIn.png';
 import discord from '../../../../assets/logos/discord.png';
-import PremiumProfileCard2LinkItem from './PremiumProfileCard2LinkItem';
+import PremiumProfileCard2LinkItem from './PremiumProfileCardLinkItem';
 import { keyframes } from '@stitches/react';
 import QRCode from 'qrcode';
 import { ImDownload, ImShare, ImCopy } from 'react-icons/im';
