@@ -11,6 +11,10 @@ export const Button = styled('button', {
   cursor: 'pointer',
   padding: '1.5%',
 
+  '&:hover': {
+    backgroundColor: '$darkGrey',
+  },
+
   variants: {
     variant: {
       gradient: {
