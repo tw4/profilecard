@@ -1,12 +1,12 @@
-import { styled } from '@stitches/react';
+import { styled } from '../stitches.config';
 
 export const Button = styled('button', {
   width: '100%',
   borderWidth: '2px',
-  borderColor: '#302C3F',
+  borderColor: '$grey',
   borderStyle: 'solid',
   color: 'White',
-  backgroundColor: '#302C3F',
+  backgroundColor: '$grey',
   borderRadius: '50px',
   cursor: 'pointer',
   padding: '1.5%',
@@ -14,10 +14,10 @@ export const Button = styled('button', {
   variants: {
     variant: {
       gradient: {
-        backgroundColor: '#13111A',
+        backgroundColor: '$bgColor',
       },
       delete: {
-        color: '#F67280',
+        color: '$red',
       },
       blue: {
         color: 'White',
@@ -37,7 +37,7 @@ export const Button = styled('button', {
     },
     color: {
       purple: {
-        color: '#7353E5',
+        color: '$purple',
       },
     },
 

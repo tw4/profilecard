@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styled } from '../stitches.config';
 
 export const Link = styled('a', {
   variants: {
@@ -16,7 +16,7 @@ export const Link = styled('a', {
 
     color: {
       light: {
-        color: '#C0C2CE',
+        color: '$darkWhite',
         textDecoration: 'none',
         '&:hover': {
           color: 'White',
