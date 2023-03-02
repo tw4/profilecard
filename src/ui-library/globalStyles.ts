@@ -1,4 +1,4 @@
-import { globalCss } from '@stitches/react';
+import { globalCss } from '../ui-library/stitches.config';
 
 const globalStyles = globalCss({
   '@import': [
@@ -10,17 +10,17 @@ const globalStyles = globalCss({
     boxSizing: 'border-box',
     '::-webkit-scrollbar': {
       width: '0.4em',
-      backgroundColor: '#1D1A27',
+      backgroundColor: '$bgColor',
     },
     '::-webkit-scrollbar-thumb': {
-      background: 'linear-gradient(to top, #CE4DA4, #7353E5)',
+      background: 'linear-gradient(to top, $pink, $purple)',
       borderRadius: '0.4em',
     },
     '::-webkit-scrollbar-track': {
       backgroundColor: 'transparent',
     },
   },
-  body: { fontFamily: 'Open Sans, sans-serif', backgroundColor: '#13111A' },
+  body: { fontFamily: 'Open Sans, sans-serif', backgroundColor: '$bgColor' },
 });
 
 export default globalStyles;
