@@ -130,7 +130,7 @@ const Profile = () => {
     const errorList: string[] = [];
     const regex = /^(https?:\/\/)/;
 
-    if (val.link !== '') {
+    if (val.link.includes('.')) {
       if (!regex.test(val.link)) {
         val.link = 'http://' + val.link;
       }
@@ -138,7 +138,7 @@ const Profile = () => {
         errorList.push(val.link);
       }
     } else {
-      errorList.push('link cannot be empty');
+      errorList.push('please enter a link.');
     }
 
     setValidatorError(errorList);
@@ -163,9 +163,10 @@ const Profile = () => {
   // if the user ID and token match
   //  the corresponding values in the database
   const updateButton = async () => {
+    const errors: string[] = [];
     setLoading(true);
     if (username === '') {
-      alert('Username cannot be empty');
+      setValidatorError(['Please enter a link']);
     }
 
     let linkList: Links[] = [];
@@ -178,9 +179,14 @@ const Profile = () => {
 
     setLinks(linkList);
 
-    linkList = await linkList.map(link => checkLinkFormat(link));
+    linkList = await linkList.map(link => {
+      if (!link.link.includes('.')) {
+        errors.push('Please enter a link');
+      }
+      return checkLinkFormat(link);
+    });
 
-    if (validatorError.length === 0) {
+    if (errors.length === 0) {
       try {
         const q = query(
           collection(db, 'users'),
@@ -205,6 +211,8 @@ const Profile = () => {
       } catch (error) {
         alert(error);
       }
+    } else {
+      setValidatorError(errors);
     }
     setLoading(false);
   };
