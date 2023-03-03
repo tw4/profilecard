@@ -1,4 +1,4 @@
-import { Box, Text } from '../../ui-library';
+import { Box, Text, Image } from '../../ui-library';
 import profileCardPurview from '../../assets/profileCardPurview.svg';
 
 const Produckt = () => {
@@ -40,7 +40,7 @@ const Produckt = () => {
           },
         }}
       >
-        <img
+        <Image
           src={profileCardPurview}
           width="35%"
           height="35%"
