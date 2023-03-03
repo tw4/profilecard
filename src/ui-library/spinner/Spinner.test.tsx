@@ -5,7 +5,7 @@ beforeAll(() => {
   render(<Spinner data-testid="spin" />);
 });
 
-test('<Spinner/>', () => {
-  const link = screen.findAllByTestId('spin');
-  expect(link).toBeInTheDocument();
+test('<Spinner/>', async () => {
+  const spin = await screen.findByTestId('spin');
+  expect(spin).toBeInTheDocument();
 });
