@@ -1,11 +1,11 @@
-import { screen, render } from "@testing-library/react";
-import { Input } from "./Input";
+import { screen, render } from '@testing-library/react';
+import { Input } from './Input';
 
 beforeAll(() => {
-  render(<Input value="test" />);
+  render(<Input placeholder="test" />);
 });
 
-test("<Input />", () => {
-  const input = screen.getByDisplayValue("test");
+test('<Input />', () => {
+  const input = screen.getByPlaceholderText('test');
   expect(input).toBeInTheDocument();
 });
