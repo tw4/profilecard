@@ -1,4 +1,12 @@
-import { Avatar, Box, Button, Text, Input, Link } from '../ui-library';
+import {
+  Avatar,
+  Box,
+  Button,
+  Text,
+  Input,
+  Link,
+  TextArea,
+} from '../ui-library';
 import { signOut, User } from 'firebase/auth';
 import { auth, db } from '../services/Firebase';
 import { useNavigate } from 'react-router-dom';
@@ -228,7 +236,7 @@ const Profile = () => {
 
   // this function makes maximum length control for description
   const descriptionValidator = async (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setDescription(e.target.value);
     if (description.length > 199) {
@@ -408,7 +416,7 @@ const Profile = () => {
           >
             Description
           </Text>
-          <Input
+          <TextArea
             onChange={descriptionValidator}
             value={description}
             css={{
