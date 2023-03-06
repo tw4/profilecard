@@ -227,33 +227,24 @@ const Profile = () => {
 
   // this function makes maximum length control for name
   const nameValidator = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    if (name.length > 29) {
-      alert('name must be maximum length 30');
-      await setName('');
-    }
+    const newName = e.target.value.slice(0, 30);
+    await setName(newName);
   };
 
   // this function makes maximum length control for description
   const descriptionValidator = async (
     e: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setDescription(e.target.value);
-    if (description.length > 199) {
-      alert('description must be maximum length 200');
-      await setDescription('');
-    }
+    const newDescription = e.target.value.slice(0, 200);
+    await setDescription(newDescription);
   };
 
   // this function makes maximum length control for public email
   const publicEmailValidator = async (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPublicEmail(e.target.value);
-    if (publicEmail.length > 199) {
-      alert('public email must be maximum length 200');
-      await setPublicEmail('');
-    }
+    const newEmail = e.target.value.slice(0, 200);
+    setPublicEmail(newEmail);
   };
 
   // this function makes maximum length control for title
