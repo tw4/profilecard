@@ -1,6 +1,6 @@
 {
   "name": "profilecard.co",
-  "version": "2023.0302.0",
+  "version": "2023.0307.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
