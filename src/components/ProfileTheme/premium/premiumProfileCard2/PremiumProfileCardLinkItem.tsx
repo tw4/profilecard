@@ -1,16 +1,17 @@
 import { Box, ImageIcon, Text, Link } from '../../../../ui-library';
 import type { FC } from 'react';
+import { IconType } from 'react-icons';
 
 type IProps = {
   link: string;
-  iconUrl: string;
+  Icon: IconType;
   title: string;
   userColor: string;
 };
 
 const PremiumProfileCard2LinkItem: FC<IProps> = ({
   link,
-  iconUrl,
+  Icon,
   title,
   userColor,
 }) => {
@@ -34,7 +35,7 @@ const PremiumProfileCard2LinkItem: FC<IProps> = ({
     >
       <Box
         css={{
-          background: userColor,
+          background: 'Black',
           height: '50px',
           width: '50px',
           borderTopLeftRadius: '10px',
@@ -42,9 +43,12 @@ const PremiumProfileCard2LinkItem: FC<IProps> = ({
           alignItems: 'center',
         }}
       >
-        <ImageIcon src={iconUrl} alt={title} height="50px" width="50px" />
+        <Icon style={{ height: '100%' }} size="35" color={userColor} />
       </Box>
-      <Box stack="VStack" css={{ textAlign: 'start', marginLeft: '2.5%' }}>
+      <Box
+        stack="VStack"
+        css={{ textAlign: 'start', marginLeft: '2.5%', marginTop: '0.5%' }}
+      >
         <Text color="light">{shorter(title)}</Text>
         <Text size={5} color="grey">
           {shorter(link)}

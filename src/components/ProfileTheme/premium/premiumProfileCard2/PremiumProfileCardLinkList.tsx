@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import type { Links, UserCard } from '../../../../types';
-import linkedIn from '../../../../assets/logos/linkedIn.png';
-import discord from '../../../../assets/logos/discord.png';
 import { Box } from '../../../../ui-library';
+import { GetIcon } from '../../../../utils/GetIcon';
 import PremiumProfileCardLinkItem from './PremiumProfileCardLinkItem';
 
 type IProps = {
@@ -11,27 +10,14 @@ type IProps = {
 };
 
 const PremiumProfileCardLinkList: FC<IProps> = ({ linkList, userDeteil }) => {
-  const domainControl = (domain: string) => {
-    switch (domain) {
-      case 'discord.gg':
-        return discord;
-      case 'www.linkedin.com':
-        return linkedIn;
-      case 'linkedin.com':
-        return linkedIn;
-      default:
-        return 'https://' + domain + '/favicon.ico';
-    }
-  };
-
   return (
     <>
       {linkList
         ? linkList.map(({ title, link }) => {
             if (title === '' && link === '') return null;
             const url = new URL(link);
-            const domain = url.hostname;
-            const iconUrl = domainControl(domain);
+            const domain = url.hostname.replaceAll('www.', '');
+            const icon = GetIcon(domain);
             return (
               <Box
                 key={link}
@@ -44,7 +30,7 @@ const PremiumProfileCardLinkList: FC<IProps> = ({ linkList, userDeteil }) => {
               >
                 <PremiumProfileCardLinkItem
                   link={link}
-                  iconUrl={iconUrl}
+                  Icon={icon}
                   userColor={userDeteil?.color}
                   title={
                     title === ''
