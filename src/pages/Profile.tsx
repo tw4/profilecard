@@ -305,11 +305,17 @@ const Profile = () => {
         }}
       >
         <Avatar
+          onClick={() =>
+            alert(
+              'You can change your profile picture in your Google account settings'
+            )
+          }
           src={user?.photoURL || avatar}
           css={{
             height: '100px',
             width: '100px',
             marginTop: '2.5%',
+            cursor: 'pointer',
           }}
         />
         <Box stack="VStack" css={{ alignItems: 'center', marginTop: '5%' }}>
