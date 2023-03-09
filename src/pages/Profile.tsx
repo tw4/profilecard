@@ -177,6 +177,14 @@ const Profile = () => {
       setValidatorError(['Please enter a link']);
     }
 
+    if (publicEmail !== '') {
+      if (!publicEmail.includes('@') || !publicEmail.includes('.')) {
+        errors.push(
+          'The public e-mail address you entered is not in the correct format.'
+        );
+      }
+    }
+
     let linkList: Links[] = [];
 
     links.map(val => {
