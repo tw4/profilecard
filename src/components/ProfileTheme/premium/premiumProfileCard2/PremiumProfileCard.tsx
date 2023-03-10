@@ -260,10 +260,12 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
         css={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          marginTop: '2.5%',
           backgroundColor: 'rgb(43, 45, 49)',
-          margin: '2% 5% 5% 5%',
+          margin: '2% 5% 2% 5%',
           borderRadius: '8px',
+          '@media (max-width: 768px)': {
+            gridTemplateColumns: '1fr',
+          },
           animation: `${sectionOne} 1.2s ease-in-out`,
         }}
       >

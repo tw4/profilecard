@@ -23,9 +23,6 @@ const PremiumProfileCardLinkList: FC<IProps> = ({ linkList, userDeteil }) => {
                 key={link}
                 css={{
                   margin: '5%',
-                  '@media screen and (max-width: 400px)': {
-                    width: '75%',
-                  },
                 }}
               >
                 <PremiumProfileCardLinkItem
