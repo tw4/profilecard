@@ -37,6 +37,11 @@ export const Button = styled('button', {
         backgroundColor: 'Gray',
         borderRadius: '8px',
         border: 'none',
+
+        '&:hover': {
+          backgroundColor: 'Gray',
+          cursor: 'default',
+        },
       },
     },
     color: {
