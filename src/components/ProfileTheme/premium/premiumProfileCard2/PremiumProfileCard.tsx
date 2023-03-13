@@ -196,7 +196,7 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
                 (window.location.href = `mailto:${userDeteil?.publicEmail}`)
               }
               variant={userDeteil?.publicEmail === '' ? 'disable' : 'blue'}
-              size={4}
+              size={userDeteil?.publicEmail === '' ? 5 : 4}
               css={{
                 width: '20%',
                 marginTop: '50px',
