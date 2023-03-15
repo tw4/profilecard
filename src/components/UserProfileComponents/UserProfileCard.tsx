@@ -1,18 +1,18 @@
 import { FC, useEffect, useState } from 'react';
-import type { UserCard, Links } from '../../../../types';
-import { Avatar, Box, Button, ImageIcon, Text } from '../../../../ui-library';
+import type { UserCard, Links } from '../../types';
+import { Avatar, Box, Button, ImageIcon, Text } from '../../ui-library';
 import { keyframes } from '@stitches/react';
 import QRCode from 'qrcode';
 import { ImDownload, ImShare, ImCopy } from 'react-icons/im';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import PremiumProfileCardLinkList from './PremiumProfileCardLinkList';
+import PremiumProfileCardLinkList from './UserProfileCardList';
 
 type IProps = {
   userDeteil: UserCard;
   linkList: Links[];
 };
 
-const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
+const UserProfileCard: FC<IProps> = ({ userDeteil, linkList }) => {
   const [qr, setQr] = useState<string>('');
   const [url, setUrl] = useState<string>(
     'https://www.profilecard.co/' + userDeteil?.username
@@ -278,4 +278,4 @@ const PremiumProfileCard2: FC<IProps> = ({ userDeteil, linkList }) => {
   );
 };
 
-export default PremiumProfileCard2;
+export default UserProfileCard;
