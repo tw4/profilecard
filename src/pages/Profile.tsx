@@ -6,6 +6,7 @@ import {
   Input,
   Link,
   TextArea,
+  GradientButton,
 } from '../ui-library';
 import { signOut, User } from 'firebase/auth';
 import { auth, db } from '../services/Firebase';
@@ -29,7 +30,6 @@ import LinkInput from '../components/LinkInput';
 import Footer from '../components/Footer';
 import CenterLayout from '../components/layout/CenterLayout';
 import Loading from '../components/Loading';
-import GradientButton from '../components/GradientButton';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Navbar from '../components/Navbar';
 
