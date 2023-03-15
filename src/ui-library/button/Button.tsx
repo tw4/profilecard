@@ -1,4 +1,6 @@
 import { styled } from '../stitches.config';
+import { Box } from '../index';
+import type { FC } from 'react';
 
 export const Button = styled('button', {
   width: '100%',
@@ -66,3 +68,42 @@ export const Button = styled('button', {
     },
   },
 });
+
+// GradientButton IProps
+type GradientButtonProps = {
+  onClik: () => void;
+  content: string;
+  size: number;
+};
+
+export const GradientButton: FC<GradientButtonProps> = ({
+  onClik,
+  content,
+  size,
+}) => {
+  return (
+    <Box
+      css={{
+        width: '25%',
+        marginTop: '5%',
+        padding: '2px',
+        background: 'linear-gradient(to right, #CE4DA4, #7353E5)',
+        borderRadius: '50px',
+        '@media screen and (max-width: 768px)': {
+          width: '90%',
+        },
+      }}
+    >
+      <Button
+        variant="gradient"
+        onClick={() => onClik()}
+        size={size}
+        css={{
+          width: '100%',
+        }}
+      >
+        {content}
+      </Button>
+    </Box>
+  );
+};
