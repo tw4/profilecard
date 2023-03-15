@@ -1,4 +1,4 @@
-import { Box, ImageIcon, Text, Link } from '../../../../ui-library';
+import { Box, Text, Link } from '../../ui-library';
 import type { FC } from 'react';
 import { IconType } from 'react-icons';
 
@@ -9,7 +9,7 @@ type IProps = {
   userColor: string;
 };
 
-const PremiumProfileCard2LinkItem: FC<IProps> = ({
+const UserProfileCardListItem: FC<IProps> = ({
   link,
   Icon,
   title,
@@ -58,4 +58,4 @@ const PremiumProfileCard2LinkItem: FC<IProps> = ({
   );
 };
 
-export default PremiumProfileCard2LinkItem;
+export default UserProfileCardListItem;

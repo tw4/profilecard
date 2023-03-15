@@ -1,15 +1,15 @@
 import type { FC } from 'react';
-import type { Links, UserCard } from '../../../../types';
-import { Box } from '../../../../ui-library';
-import { GetIcon } from '../../../../utils/GetIcon';
-import PremiumProfileCardLinkItem from './PremiumProfileCardLinkItem';
+import type { Links, UserCard } from '../../types';
+import { Box } from '../../ui-library';
+import { GetIcon } from '../../utils/GetIcon';
+import PremiumProfileCardLinkItem from './UserProfileCardListItem';
 
 type IProps = {
   linkList: Links[];
   userDeteil: UserCard;
 };
 
-const PremiumProfileCardLinkList: FC<IProps> = ({ linkList, userDeteil }) => {
+const UserProfileCardList: FC<IProps> = ({ linkList, userDeteil }) => {
   return (
     <>
       {linkList
@@ -45,4 +45,4 @@ const PremiumProfileCardLinkList: FC<IProps> = ({ linkList, userDeteil }) => {
   );
 };
 
-export default PremiumProfileCardLinkList;
+export default UserProfileCardList;

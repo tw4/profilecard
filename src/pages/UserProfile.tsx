@@ -5,7 +5,7 @@ import { db } from '../services/Firebase';
 import { Links, UserCard } from '../types';
 import Loading from '../components/Loading';
 import MetaTag from '../components/MetaTag';
-import PremiumProfileCard from '../components/ProfileTheme/premium/premiumProfileCard2/PremiumProfileCard';
+import UserProfileCard from '../components/UserProfileComponents/UserProfileCard';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -48,7 +48,7 @@ const UserProfile = () => {
         }`}
         content={userDeteil ? userDeteil.username : 'ProfileCard'}
       />
-      <PremiumProfileCard
+      <UserProfileCard
         linkList={linkList}
         userDeteil={userDeteil as UserCard}
       />
