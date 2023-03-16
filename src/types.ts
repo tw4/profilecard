@@ -13,4 +13,5 @@ export type UserCard = {
   links: Links[];
   photoURL: string;
   publicEmail: string;
+  status: string;
 };
