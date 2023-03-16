@@ -8,3 +8,4 @@ export * from './link/Link';
 export * from './spinner/Spinner';
 export * from './image/Image';
 export * from './textArea/TextArea';
+export * from './badge/Badge';
