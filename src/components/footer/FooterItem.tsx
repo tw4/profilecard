@@ -1,4 +1,4 @@
-import { Link } from '../ui-library';
+import { Link } from '../../ui-library';
 import type { FC } from 'react';
 
 type IProps = {
