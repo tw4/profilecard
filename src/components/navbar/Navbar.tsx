@@ -1,5 +1,5 @@
 import { Box, Text, Button } from '../../ui-library';
-import profileCard from '../assets/logos/profilecard.svg';
+import profileCard from '../../assets/logos/profilecard.svg';
 import { signOut } from 'firebase/auth';
 import { useAppDispatch } from '../../store';
 import { useNavigate } from 'react-router-dom';
