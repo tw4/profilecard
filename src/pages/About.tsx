@@ -1,6 +1,6 @@
-import Footer from '../components/Footer';
+import Footer from '../components/footer/Footer';
 import Layout from '../components/layout/Layout';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 import { Box, Link, Text } from '../ui-library';
 import logo from '../assets/logos/profilecardrgb.svg';
 import MetaTag from '../components/MetaTag';

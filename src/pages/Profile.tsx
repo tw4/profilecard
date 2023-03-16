@@ -27,11 +27,11 @@ import {
 } from 'firebase/firestore';
 import { SketchPicker } from 'react-color';
 import LinkInput from '../components/LinkInput';
-import Footer from '../components/Footer';
+import Footer from '../components/footer/Footer';
 import CenterLayout from '../components/layout/CenterLayout';
 import Loading from '../components/Loading';
 import { BsFillTrashFill } from 'react-icons/bs';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 
 const Profile = () => {
   const navigate = useNavigate();

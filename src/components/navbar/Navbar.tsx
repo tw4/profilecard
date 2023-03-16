@@ -1,10 +1,10 @@
-import { Box, Text, Button } from '../ui-library';
+import { Box, Text, Button } from '../../ui-library';
 import profileCard from '../assets/logos/profilecard.svg';
 import { signOut } from 'firebase/auth';
-import { useAppDispatch } from '../store';
+import { useAppDispatch } from '../../store';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../services/Firebase';
-import { clearUserState } from '../features/user/UserSlice';
+import { auth } from '../../services/Firebase';
+import { clearUserState } from '../../features/user/UserSlice';
 import NavbarItem from './NavbarItem';
 import { useEffect, useState } from 'react';
 
