@@ -7,6 +7,7 @@ import {
   Link,
   TextArea,
   GradientButton,
+  Badge,
 } from '../ui-library';
 import { signOut, User } from 'firebase/auth';
 import { auth, db } from '../services/Firebase';
@@ -32,6 +33,7 @@ import CenterLayout from '../components/layout/CenterLayout';
 import Loading from '../components/Loading';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Navbar from '../components/navbar/Navbar';
+import { UserStatus } from '../enum';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -45,13 +47,15 @@ const Profile = () => {
   const [token, setToken] = useState<string>(sessionStorage.getItem('token')!);
   const [links, setLinks] = useState<Links[]>([]);
   const [publicEmail, setPublicEmail] = useState<string>('');
-
+  const [status, setStatus] = useState<string>('');
   const [validatorError, setValidatorError] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [userLinkCount, setUserLinkCount] = useState<number>(4);
 
   useEffect(() => {
     UserLoginValidator(sessionStorage, navigate, '/profile');
     setUser(getUser());
+    console.log();
   }, []);
 
   const getUser = () => {
@@ -87,6 +91,18 @@ const Profile = () => {
       setColor(doc.data().color);
       setLinks(doc.data().links);
       setPublicEmail(doc.data().publicEmail || '');
+      setStatus(doc.data().status || ('' as UserStatus));
+    }
+    switch (querySnapshot.docs[0].data().status as UserStatus) {
+      case UserStatus.Standard:
+        setUserLinkCount(4);
+        break;
+      case UserStatus.Pro:
+        setUserLinkCount(24);
+        break;
+      default:
+        setUserLinkCount(4);
+        break;
     }
     setLoading(false);
   };
@@ -155,7 +171,7 @@ const Profile = () => {
 
   // add to link
   const addToLink = () => {
-    if (links.length <= 4) {
+    if (links.length <= userLinkCount) {
       const tmp = [...links, { link: '', title: '' } as Links];
       setLinks(tmp);
     }
@@ -326,6 +342,9 @@ const Profile = () => {
             cursor: 'pointer',
           }}
         />
+        {status != UserStatus.Standard && status !== '' ? (
+          <Badge css={{ marginTop: '5%' }}>{status?.toUpperCase()}</Badge>
+        ) : null}
         <Box stack="VStack" css={{ alignItems: 'center', marginTop: '5%' }}>
           <Text
             css={{
@@ -510,25 +529,27 @@ const Profile = () => {
             }}
           >
             {links.map((val, index) => {
-              return (
-                <Box stack="HStack" css={{ alignItems: 'center' }}>
-                  <LinkInput
-                    key={index}
-                    link={val.link}
-                    linkName={'link' + index}
-                    title={val.title}
-                    titleName={'title' + index}
-                    linkOnChange={linkHandler}
-                    titleOnChange={titlesValidator}
-                  />
-                  <Button
-                    onClick={() => deleteLink(index)}
-                    css={{ width: '10%' }}
-                  >
-                    <BsFillTrashFill color="#F67280" />
-                  </Button>
-                </Box>
-              );
+              if (index <= userLinkCount) {
+                return (
+                  <Box stack="HStack" css={{ alignItems: 'center' }}>
+                    <LinkInput
+                      key={index}
+                      link={val.link}
+                      linkName={'link' + index}
+                      title={val.title}
+                      titleName={'title' + index}
+                      linkOnChange={linkHandler}
+                      titleOnChange={titlesValidator}
+                    />
+                    <Button
+                      onClick={() => deleteLink(index)}
+                      css={{ width: '10%' }}
+                    >
+                      <BsFillTrashFill color="#F67280" />
+                    </Button>
+                  </Box>
+                );
+              }
             })}
           </Box>
           <Box css={{ marginTop: '2%' }}>

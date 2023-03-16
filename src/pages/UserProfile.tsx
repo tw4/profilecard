@@ -6,6 +6,7 @@ import { Links, UserCard } from '../types';
 import Loading from '../components/Loading';
 import MetaTag from '../components/MetaTag';
 import UserProfileCard from '../components/UserProfileComponents/UserProfileCard';
+import { UserStatus } from '../enum';
 
 const UserProfile = () => {
   const { user } = useParams();
@@ -14,6 +15,7 @@ const UserProfile = () => {
   const [userDeteil, setUserDeteil] = useState<UserCard>();
   const [linkList, setLinkList] = useState<Links[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [userLinkCount, setUserLinkCount] = useState<number>(4);
 
   useEffect(() => {
     getUserDeteilFromDB(user || '');
@@ -35,6 +37,17 @@ const UserProfile = () => {
 
     setUserDeteil(doc.data() as UserCard);
     setLinkList(doc.data().links);
+    switch (querySnapshot.docs[0].data().status as UserStatus) {
+      case UserStatus.Standard:
+        setUserLinkCount(4);
+        break;
+      case UserStatus.Pro:
+        setUserLinkCount(24);
+        break;
+      default:
+        setUserLinkCount(4);
+        break;
+    }
     setLoading(false);
   };
 
@@ -50,6 +63,7 @@ const UserProfile = () => {
       />
       <UserProfileCard
         linkList={linkList}
+        userLinkCount={userLinkCount}
         userDeteil={userDeteil as UserCard}
       />
     </>

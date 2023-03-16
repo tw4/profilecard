@@ -1,18 +1,24 @@
 import { FC, useEffect, useState } from 'react';
 import type { UserCard, Links } from '../../types';
-import { Avatar, Box, Button, ImageIcon, Text } from '../../ui-library';
+import { Avatar, Badge, Box, Button, ImageIcon, Text } from '../../ui-library';
 import { keyframes } from '@stitches/react';
 import QRCode from 'qrcode';
 import { ImDownload, ImShare, ImCopy } from 'react-icons/im';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import PremiumProfileCardLinkList from './UserProfileCardList';
+import { UserStatus } from '../../enum';
 
 type IProps = {
   userDeteil: UserCard;
   linkList: Links[];
+  userLinkCount: number;
 };
 
-const UserProfileCard: FC<IProps> = ({ userDeteil, linkList }) => {
+const UserProfileCard: FC<IProps> = ({
+  userDeteil,
+  linkList,
+  userLinkCount,
+}) => {
   const [qr, setQr] = useState<string>('');
   const [url, setUrl] = useState<string>(
     'https://www.profilecard.co/' + userDeteil?.username
@@ -168,9 +174,39 @@ const UserProfileCard: FC<IProps> = ({ userDeteil, linkList }) => {
         >
           <Avatar variant="profileCard" src={userDeteil?.photoURL} />
           <Box stack="VStack" css={{ textAlign: 'start', marginTop: '30px' }}>
-            <Text as={'h2'} color="light" size={2} css={{ marginLeft: '2%' }}>
-              {userDeteil?.name}
-            </Text>
+            <Box
+              stack="HStack"
+              css={{
+                alignItems: 'center',
+                '@media screen and (max-width: 768px)': {
+                  flexDirection: 'row',
+                },
+              }}
+            >
+              <Text
+                as={'h2'}
+                color="light"
+                size={2}
+                css={{
+                  marginLeft: '2%',
+                  whiteSpace: 'break-spaces',
+                  wordBreak: 'break-word',
+                }}
+              >
+                {userDeteil?.name}
+              </Text>
+              {userDeteil?.status ?? '' != '' ? (
+                userDeteil.status != UserStatus.Standard ? (
+                  <Badge
+                    css={{
+                      marginLeft: '2.5%',
+                    }}
+                  >
+                    {userDeteil?.status.toUpperCase()}
+                  </Badge>
+                ) : null
+              ) : null}
+            </Box>
             <Text as={'h2'} color="light" size={5} css={{ marginLeft: '2%' }}>
               @{userDeteil?.username}
             </Text>
@@ -272,6 +308,7 @@ const UserProfileCard: FC<IProps> = ({ userDeteil, linkList }) => {
         <PremiumProfileCardLinkList
           linkList={linkList}
           userDeteil={userDeteil}
+          userLinkCount={userLinkCount}
         />
       </Box>
     </Box>
