@@ -10,7 +10,7 @@ import MetaTag from '../components/MetaTag';
 import HeaderSide from '../components/LandingPage/HeaderSide';
 import Features from '../components/LandingPage/Features';
 import Produckt from '../components/LandingPage/Produckt';
-import Footer from '../components/Footer';
+import Footer from '../components/footer/Footer';
 import {
   doc,
   collection,
@@ -21,7 +21,7 @@ import {
   setDoc,
 } from 'firebase/firestore';
 import Layout from '../components/layout/Layout';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 
 const Login = () => {
   const navigate = useNavigate();

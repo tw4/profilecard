@@ -1,4 +1,4 @@
-import { Box, Text, Link } from '../ui-library';
+import { Box, Text, Link } from '../../ui-library';
 import FooterItem from './FooterItem';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
