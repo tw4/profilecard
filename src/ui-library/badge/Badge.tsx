@@ -8,4 +8,14 @@ export const Badge = styled('text', {
   borderRadius: '10px',
   paddingRight: '1%',
   paddingLeft: '1%',
+
+  variants: {
+    status: {
+      staff: {
+        color: '$blue',
+        borderColor: '$blue',
+      },
+      standard: {},
+    },
+  },
 });

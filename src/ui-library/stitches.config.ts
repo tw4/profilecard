@@ -10,6 +10,7 @@ export const { styled, css, globalCss } = createStitches({
       darkGrey: '#23202c',
       red: '#F67280',
       darkWhite: '#C0C2CE',
+      blue: '#0969da',
     },
   },
 });
