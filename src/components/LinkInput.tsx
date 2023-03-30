@@ -1,5 +1,5 @@
-import { Box, Text, Input } from "../ui-library";
-import type { FC } from "react";
+import { Box, Text, Input } from '../ui-library';
+import type { FC } from 'react';
 
 type IProps = {
   titleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,35 +19,36 @@ const LinkInput: FC<IProps> = ({
   title,
 }) => {
   return (
-    <Box stack="HStack">
+    <Box stack="HStack" css={{ width: '100vw' }}>
       <Box
         stack="VStack"
         css={{
-          textAlign: "left",
-          marginRight: "2%",
-          "@media screen and (max-width: 768px)": {
-            marginRight: "0%",
+          textAlign: 'left',
+          marginRight: '2%',
+          '@media screen and (max-width: 768px)': {
+            marginRight: '0%',
           },
-        }}>
+        }}
+      >
         <Text>Title</Text>
         <Input
           onChange={titleOnChange}
           value={title}
           name={titleName}
-          css={{ padding: "5%" }}
+          css={{ padding: '5%' }}
         />
-        <Text css={{ textAlign: "right", marginTop: "2%" }}>
-          {title.length + "/20"}
+        <Text css={{ textAlign: 'right', marginTop: '2%' }}>
+          {title.length + '/20'}
         </Text>
       </Box>
-      <Box stack="VStack" css={{ textAlign: "left" }}>
+      <Box stack="VStack" css={{ textAlign: 'left' }}>
         <Text>Link</Text>
         <Input
           onChange={linkOnChange}
           value={link}
           type="url"
           name={linkName}
-          css={{ padding: "5%" }}
+          css={{ padding: '5%' }}
         />
       </Box>
     </Box>
