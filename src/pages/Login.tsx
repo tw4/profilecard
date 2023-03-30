@@ -73,11 +73,13 @@ const Login = () => {
         photoURL: res.user.photoURL,
         links: [],
         publicEmail: '',
+        lashLogin: new Date().toLocaleDateString('en-GB'),
       });
     } else {
       const doc = querySnapshot.docs[0];
       await updateDoc(doc.ref, {
         token: token,
+        lastLogin: new Date().toLocaleDateString('en-GB'),
       });
     }
 
