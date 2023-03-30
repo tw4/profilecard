@@ -198,6 +198,11 @@ const UserProfileCard: FC<IProps> = ({
               {userDeteil?.status ?? '' != '' ? (
                 userDeteil.status != UserStatus.Standard ? (
                   <Badge
+                    status={
+                      userDeteil?.status === UserStatus.Staff
+                        ? 'staff'
+                        : 'standard'
+                    }
                     css={{
                       marginLeft: '2.5%',
                     }}
