@@ -238,6 +238,7 @@ const Profile = () => {
           photoURL: user?.photoURL,
           links: linkList,
           publicEmail: publicEmail,
+          lastChange: new Date().toLocaleDateString('en-GB'),
         });
         navigate('/' + username);
       } catch (error) {
