@@ -95,7 +95,6 @@ const Login = () => {
         content="Customizable profiles & easy social media link sharing on ProfileCard. Stand out and boost online presence. Sign up now!"
       />
       <Layout>
-        <Navbar />
         <Box stack="VStack">
           <Box stack="VStack" css={{ marginTop: '10%' }}>
             <HeaderSide login={() => login()} />
