@@ -13,7 +13,6 @@ const About = () => {
         content="Learn more about ProfileCard.co and our vision to create a tool that enables everyone to easily create their own personal profiles and share the information they want. Meet our team of experts in technical skills, customer service, and user experience, and discover how our guiding principles of honesty, transparency, and reliability drive our success. Contact us with any questions or feedback - we'd love to hear from you."
       />
       <Layout>
-        <Navbar />
         <Box stack="VStack">
           <Box
             stack="VStack"

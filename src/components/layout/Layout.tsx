@@ -1,5 +1,6 @@
 import { Box } from '../../ui-library';
 import type { FC, ReactNode } from 'react';
+import Navbar from '../navbar/Navbar';
 
 type IProps = {
   children: ReactNode;
@@ -14,6 +15,7 @@ const Layout: FC<IProps> = ({ children }) => {
         paddingRight: '2.5%',
       }}
     >
+      <Navbar />
       {children}
     </Box>
   );
