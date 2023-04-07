@@ -544,7 +544,7 @@ const Profile = () => {
                     />
                     <Button
                       onClick={() => deleteLink(index)}
-                      css={{ width: '10%' }}
+                      css={{ width: '10%', '@media screen and (max-width: 768px)': { width: '100%', marginTop: '5%'} }}
                     >
                       <BsFillTrashFill color="#F67280" />
                     </Button>
