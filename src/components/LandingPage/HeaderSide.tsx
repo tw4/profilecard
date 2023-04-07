@@ -43,7 +43,7 @@ const HeaderSide: FC<IProps> = ({ login }) => {
         ProfileCard is a great tool for creating and sharing your personal
         brand. Sign up now and create your own profile page!
       </Text>
-      <GradientButton content="Sign in with Google" onClik={login} size={3} />
+      <GradientButton content="Sign in with your free Google account" onClik={login} size={3} />
     </Box>
   );
 };
