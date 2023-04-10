@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import type { UserCard, Links } from '../../types';
+import type { UserData, Links } from '../../types';
 import { Avatar, Badge, Box, Button, ImageIcon, Text } from '../../ui-library';
 import { keyframes } from '@stitches/react';
 import QRCode from 'qrcode';
@@ -9,7 +9,7 @@ import PremiumProfileCardLinkList from './UserProfileCardList';
 import { UserStatus } from '../../enum';
 
 type IProps = {
-  userDeteil: UserCard;
+  userDeteil: UserData;
   linkList: Links[];
   userLinkCount: number;
 };
