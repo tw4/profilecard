@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../services/Firebase';
-import { Links, UserCard } from '../types';
+import { Links, UserData} from '../types';
 import Loading from '../components/Loading';
 import MetaTag from '../components/MetaTag';
 import UserProfileCard from '../components/UserProfileComponents/UserProfileCard';
@@ -12,7 +12,7 @@ const UserProfile = () => {
   const { user } = useParams();
   const navigate = useNavigate();
 
-  const [userDeteil, setUserDeteil] = useState<UserCard>();
+  const [userDeteil, setUserDeteil] = useState<UserData>();
   const [linkList, setLinkList] = useState<Links[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [userLinkCount, setUserLinkCount] = useState<number>(4);
@@ -35,7 +35,7 @@ const UserProfile = () => {
     }
     const doc = querySnapshot.docs[0];
 
-    setUserDeteil(doc.data() as UserCard);
+    setUserDeteil(doc.data() as UserData);
     setLinkList(doc.data().links);
     switch (querySnapshot.docs[0].data().status as UserStatus) {
       case UserStatus.Standard:
@@ -64,7 +64,7 @@ const UserProfile = () => {
       <UserProfileCard
         linkList={linkList}
         userLinkCount={userLinkCount}
-        userDeteil={userDeteil as UserCard}
+        userDeteil={userDeteil as UserData}
       />
     </>
   );

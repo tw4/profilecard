@@ -1,12 +1,12 @@
 import type { FC } from 'react';
-import type { Links, UserCard } from '../../types';
+import type { Links, UserData } from '../../types';
 import { Box } from '../../ui-library';
 import { GetIcon } from '../../utils/GetIcon';
 import PremiumProfileCardLinkItem from './UserProfileCardListItem';
 
 type IProps = {
   linkList: Links[];
-  userDeteil: UserCard;
+  userDeteil: UserData
   userLinkCount: number;
 };
 
