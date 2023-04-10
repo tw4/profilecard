@@ -3,7 +3,7 @@ export type Links = {
   link: string;
 };
 
-export type UserCard = {
+export type UserData = {
   userID: string;
   email: string;
   name: string;
