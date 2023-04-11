@@ -1,5 +1,7 @@
 # Project Name: Profilecard.co
 
+![alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjg4MmRmZTZjODI3ZDhkOTg0MGUyMWE2YjIwZWEwNDVmODkwMDkyZCZjdD1n/959wAW3XvU2Lgrx1Fd/giphy.gif)
+
 ## Project Description:
 This is a web application where users can create and share their own profile cards. Users can edit, customize, and share their profile cards via QR code. This application is developed using React, Redux Toolkit, and Firebase.
 
