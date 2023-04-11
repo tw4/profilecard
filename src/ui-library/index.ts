@@ -9,3 +9,5 @@ export * from './spinner/Spinner';
 export * from './image/Image';
 export * from './textArea/TextArea';
 export * from './badge/Badge';
+export * from './form/Form';
+export * from './lable/Lable'
