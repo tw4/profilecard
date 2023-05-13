@@ -26,8 +26,3 @@ To use Firebase in the application, follow these steps:
 
 That's it! Once you've completed these steps, you should be able to use Firebase in the application.
 
-
-## License:
-Creative Commons Attribution 4.0 International
-
-This is a Public Archive repository.
