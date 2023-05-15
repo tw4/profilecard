@@ -3,4 +3,4 @@ node_modules
 src/services/Firebase.ts
 build
 .idea
-.env.staging
+.env
