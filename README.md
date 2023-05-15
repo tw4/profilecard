@@ -1,4 +1,4 @@
-# Project Name: Profilecard.co
+# Project Name: Profilecard
 
 ![alt text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjg4MmRmZTZjODI3ZDhkOTg0MGUyMWE2YjIwZWEwNDVmODkwMDkyZCZjdD1n/959wAW3XvU2Lgrx1Fd/giphy.gif)
 
