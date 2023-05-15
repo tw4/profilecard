@@ -18,12 +18,12 @@ const Produckt = () => {
           css={{ textAlign: 'justify', marginRight: '5%' }}
         >
           Personalize your profile and achieve a professional look with
-          Profilecard.co! Change your background color to whatever you like, and
+          me.wmte.io! Change your background color to whatever you like, and
           express yourself in the best way possible. Instead of boring white or
           black, choose a lively or sophisticated color to reflect yourself.
           Also, match your profile page with your background color to catch the
           attention of your visitors and achieve a professional look. With
-          Profilecard.co, you can also group your social media accounts in one
+          me.wmte.io, you can also group your social media accounts in one
           place for better communication and job search purposes. Sign up now
           and change your background color!
         </Text>

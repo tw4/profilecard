@@ -70,7 +70,7 @@ const Features = () => {
         />
         <Card
           title="Mobile-Responsive Design"
-          content="Profilecard.co is designed to be mobile-responsive, ensuring that it looks good and works well on a variety of mobile devices."
+          content="me.wmte.io is designed to be mobile-responsive, ensuring that it looks good and works well on a variety of mobile devices."
         />
       </Box>
     </Box>

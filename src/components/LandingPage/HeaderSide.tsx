@@ -35,12 +35,12 @@ const HeaderSide: FC<IProps> = ({ login }) => {
           },
         }}
       >
-        Welcome to ProfileCard! We are a web application that allows users to
+        Welcome to me.wmte.io! We are a web application that allows users to
         create their own personal profile pages and share links such as social
         media accounts on these pages. Easily share your social media accounts,
         email address, or blog on your profile page. Customize your profile page
         and share it with friends, business partners, or potential employers.
-        ProfileCard is a great tool for creating and sharing your personal
+        me.wmte.io is a great tool for creating and sharing your personal
         brand. Sign up now and create your own profile page!
       </Text>
       <GradientButton content="Sign in with your free Google account" onClik={login} size={3} />
