@@ -19,7 +19,7 @@ const Footer = () => {
     >
       <Box stack="VStack">
         <Text color="light" size="4" as="h4">
-          Profile Card
+          Mert Sabinov
         </Text>
         <Box
           stack="HStack"
@@ -28,10 +28,10 @@ const Footer = () => {
             marginTop: '2.5%',
           }}
         >
-          <Link href="https://www.discord.profilecard.co/">
+          <Link href="/">
             <FaDiscord size="30px" color="white" />
           </Link>
-          <Link href="https://twitter.com/theprofilecard">
+          <Link href="/">
             <FaTwitter size="30px" color="white" />
           </Link>
         </Box>
@@ -39,20 +39,20 @@ const Footer = () => {
       </Box>
       <Box stack="VStack">
         <FooterItem
-          href="https://www.discord.profilecard.co/"
+          href="/"
           title="Help & Support"
         />
         <FooterItem
-          href="https://www.discord.profilecard.co/"
+          href="/"
           title="Feedback"
         />
       </Box>
       <Box stack="VStack">
-        <FooterItem href="https://faq.profilecard.co/" title="FAQ" />
-        <FooterItem href="https://privacy.profilecard.co/" title="Privacy" />
+        <FooterItem href="/" title="FAQ" />
+        <FooterItem href="/" title="Privacy" />
       </Box>
       <Box stack="VStack">
-        <Text color="light">© Copyright 2023 Profilecard.co</Text>
+        <Text color="light">© Copyright 2023</Text>
         <Link href="https://mertsabinov.com/" color="light">
           Mert Sabinov
         </Link>

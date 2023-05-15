@@ -10,7 +10,7 @@ const Produckt = () => {
           color="light"
           css={{ fontWeight: 'bold', textAlign: 'start' }}
         >
-          Express yourself by changing your background color - Profilecard.co
+          Express yourself by changing your background color
         </Text>
         <Text
           color="grey"
@@ -44,7 +44,7 @@ const Produckt = () => {
           src={profileCardPurview}
           width="35%"
           height="35%"
-          alt="profile card purview"
+          alt="profile purview"
           style={{
             marginTop: '2.5%',
             marginBottom: '2.5%',
