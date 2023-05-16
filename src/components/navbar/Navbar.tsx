@@ -91,7 +91,7 @@ const Navbar = () => {
         {login ? null : <NavbarItem href="/" content="Home" />}
         {login ? <NavbarItem href="/profile" content="Profile" /> : null}
         <NavbarItem href="/about" content="About" />
-        <NavbarItem href="https://faq.profilecard.co/" content="FAQ" />
+        <NavbarItem href="/" content="FAQ" />
       </Box>
       <Box css={{ width: '25%' }}>
         {login ? (
